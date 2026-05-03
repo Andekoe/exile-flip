@@ -60,6 +60,7 @@ async function checkPrices() {
       cardName: item.cardName,
       buyPrice: item.buyPrice,
       sellPrice: item.sellPrice,
+      divinePrice: item.divinePrice,
       profitPercent: calculateProfit(item.buyPrice, item.sellPrice)
     }));
 
@@ -97,8 +98,9 @@ function displayResults(flips) {
 
     row.innerHTML = `
       <td class="table__cell table__cell--name">${sanitizeInput(flip.cardName)}</td>
-      <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}</td>
-      <td class="table__cell table__cell--sell">${formatPrice(flip.sellPrice)}</td>
+      <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c</td>
+      <td class="table__cell table__cell--divine">${flip.divinePrice.toFixed(2)} div</td>
+      <td class="table__cell table__cell--sell">${formatPrice(flip.sellPrice)}c</td>
       <td class="table__cell table__cell--profit ${profitClass}">${flip.profitPercent.toFixed(1)}%</td>
     `;
 

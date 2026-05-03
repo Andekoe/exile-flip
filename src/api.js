@@ -10,7 +10,6 @@ async function fetchDivinationPrices(league) {
 
     const data = await response.json();
     console.log('Found', data.lines?.length || 0, 'divination cards');
-    console.log('Core rates:', data.core?.rates);
     return parsePoeNinjaResponse(data);
   } catch (error) {
     console.error('Fetch error:', error);
@@ -20,6 +19,7 @@ async function fetchDivinationPrices(league) {
 
 function parsePoeNinjaResponse(data) {
   const priceMap = {};
+  const divineRate = data.core?.rates?.divine || 0;
 
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
@@ -33,7 +33,7 @@ function parsePoeNinjaResponse(data) {
       if (cardName && line.primaryValue !== undefined) {
         priceMap[cardName] = {
           chaos: line.primaryValue,
-          exalted: 0
+          divine: line.primaryValue * divineRate
         };
       }
     });
@@ -56,7 +56,8 @@ async function getCardPrices(cardNames, league) {
         results.push({
           cardName,
           buyPrice: priceMap[cardName].chaos,
-          sellPrice: priceMap[cardName].chaos
+          sellPrice: priceMap[cardName].chaos,
+          divinePrice: priceMap[cardName].divine
         });
       }
     });

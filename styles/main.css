@@ -279,10 +279,15 @@ body {
 }
 
 .table__cell--buy,
+.table__cell--divine,
 .table__cell--sell,
 .table__cell--profit {
   text-align: right;
   white-space: nowrap;
+}
+
+.table__cell--divine {
+  color: var(--color-warning);
 }
 
 .table__cell--profit {
