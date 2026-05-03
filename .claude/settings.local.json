@@ -15,7 +15,9 @@
       "PowerShell(Start-Process -FilePath \"c:\\\\VSCode\\\\exile-flip\\\\index.html\")",
       "PowerShell(\"Opening index.html in browser...\")",
       "Bash(curl -s \"https://poe.ninja/api/data/divinationcardsoverview?league=Hardcore\")",
-      "Bash(git commit -m 'fix: change default league to Softcore and add league selector *)"
+      "Bash(git commit -m 'fix: change default league to Softcore and add league selector *)",
+      "PowerShell(\"App reloaded in browser - now defaults to Softcore with league selector\")",
+      "Bash(git commit -m 'fix: improve API error handling with multiple endpoints and logging *)"
     ]
   }
 }

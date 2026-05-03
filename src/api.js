@@ -1,21 +1,40 @@
-const POE_NINJA_BASE = 'https://poe.ninja/api/data';
+const POE_NINJA_ENDPOINTS = [
+  'https://poe.ninja/api/data/itemoverview?league={league}&type=DivinationCard',
+  'https://poe.ninja/api/data/itemoverview?league={league}&type=Divination%20Card',
+  'https://poe.ninja/api/data/divinationcardsoverview?league={league}',
+];
+
+async function tryEndpoint(url) {
+  console.log('Trying endpoint:', url);
+  const response = await fetch(url);
+  console.log('Response status:', response.status);
+
+  if (!response.ok) {
+    throw new Error(`Status ${response.status}`);
+  }
+
+  const data = await response.json();
+  if (!data.lines || !Array.isArray(data.lines)) {
+    throw new Error('Invalid response format');
+  }
+
+  console.log('Success! Found', data.lines.length, 'items');
+  return data;
+}
 
 async function fetchDivinationPrices(league) {
-  try {
-    const response = await fetch(
-      `${POE_NINJA_BASE}/itemoverview?league=${encodeURIComponent(league)}&type=DivinationCard`
-    );
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
+  for (const endpoint of POE_NINJA_ENDPOINTS) {
+    try {
+      const url = endpoint.replace('{league}', encodeURIComponent(league));
+      const data = await tryEndpoint(url);
+      return parsePoeNinjaResponse(data);
+    } catch (error) {
+      console.warn(`Endpoint failed: ${error.message}`);
+      continue;
     }
-
-    const data = await response.json();
-    return parsePoeNinjaResponse(data);
-  } catch (error) {
-    console.error('Fetch error:', error);
-    throw new Error('Failed to fetch prices from poe.ninja. Check your internet connection.');
   }
+
+  throw new Error('All poe.ninja endpoints failed. The API may be down or blocking requests.');
 }
 
 function parsePoeNinjaResponse(data) {
@@ -38,18 +57,23 @@ function parsePoeNinjaResponse(data) {
 }
 
 async function getCardPrices(cardNames, league) {
-  const priceMap = await fetchDivinationPrices(league);
-  const results = [];
+  try {
+    const priceMap = await fetchDivinationPrices(league);
+    const results = [];
 
-  cardNames.forEach(cardName => {
-    if (priceMap[cardName]) {
-      results.push({
-        cardName,
-        buyPrice: priceMap[cardName].chaos,
-        sellPrice: priceMap[cardName].chaos
-      });
-    }
-  });
+    cardNames.forEach(cardName => {
+      if (priceMap[cardName]) {
+        results.push({
+          cardName,
+          buyPrice: priceMap[cardName].chaos,
+          sellPrice: priceMap[cardName].chaos
+        });
+      }
+    });
 
-  return results;
+    return results;
+  } catch (error) {
+    console.error('getCardPrices error:', error);
+    throw error;
+  }
 }

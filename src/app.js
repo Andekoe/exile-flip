@@ -75,6 +75,7 @@ async function checkPrices() {
     displayResults(filtered);
     statusMessage.textContent = `Found ${filtered.length} profitable flips.`;
   } catch (error) {
+    console.error('Check prices error:', error);
     statusMessage.textContent = `Error: ${error.message}`;
     resultsTable.style.display = 'none';
     noResults.style.display = 'block';
