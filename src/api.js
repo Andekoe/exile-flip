@@ -1,3 +1,14 @@
+async function fetchAllCardNames(league) {
+  try {
+    const response = await fetch(`/api/proxy?league=${encodeURIComponent(league)}&type=DivinationCard`);
+    if (!response.ok) return [];
+    const data = await response.json();
+    return (data.items || []).map(item => item.name).sort();
+  } catch {
+    return [];
+  }
+}
+
 async function fetchDivinationPrices(league) {
   const url = `/api/proxy?league=${encodeURIComponent(league)}&type=DivinationCard`;
 
@@ -24,20 +35,21 @@ function parsePoeNinjaResponse(data) {
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
     data.items.forEach(item => {
-      itemMap[item.id] = item.name;
+      itemMap[item.id] = { name: item.name, stackSize: item.stackSize ?? null, reward: item.reward ?? null };
     });
 
     data.lines.forEach(line => {
-      const cardName = itemMap[line.id];
-      if (!cardName || line.primaryValue === undefined) return;
+      const meta = itemMap[line.id];
+      if (!meta || line.primaryValue === undefined) return;
 
-      const stackSize = CARD_STACK_SIZES[cardName] ?? null;
+      const { name: cardName, stackSize, reward } = meta;
       const chaosPrice = line.primaryValue;
 
       priceMap[cardName] = {
         chaos: chaosPrice,
         divine: chaosPrice * divineRate,
         stackSize,
+        reward,
         totalCostChaos: stackSize !== null ? chaosPrice * stackSize : null,
         totalCostDivine: stackSize !== null ? chaosPrice * stackSize * divineRate : null
       };
@@ -63,6 +75,7 @@ async function getCardPrices(searchTerm, league) {
           buyPrice: prices.chaos,
           divinePrice: prices.divine,
           stackSize: prices.stackSize,
+          reward: prices.reward,
           totalCostChaos: prices.totalCostChaos,
           totalCostDivine: prices.totalCostDivine
         });

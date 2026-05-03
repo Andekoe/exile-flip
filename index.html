@@ -20,8 +20,10 @@
           id="searchInput"
           class="search-box__input"
           placeholder="Search divination cards..."
+          list="cardSuggestions"
           autocomplete="off"
         >
+        <datalist id="cardSuggestions"></datalist>
         <button id="checkPricesBtn" class="button button--primary">
           Check Prices
         </button>
@@ -49,6 +51,7 @@
             <th class="table__cell table__cell--stack">Stack</th>
             <th class="table__cell table__cell--buy">Per Card</th>
             <th class="table__cell table__cell--total">Full Set Cost</th>
+            <th class="table__cell table__cell--reward">Reward</th>
           </tr>
         </thead>
         <tbody id="resultsBody">

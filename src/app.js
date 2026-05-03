@@ -21,12 +21,23 @@ function initializeLeagueSelector() {
   leagueSelect.value = currentLeague;
 }
 
+async function loadCardSuggestions() {
+  const datalist = document.getElementById('cardSuggestions');
+  const names = await fetchAllCardNames(currentLeague);
+  datalist.innerHTML = '';
+  names.forEach(name => {
+    const option = document.createElement('option');
+    option.value = name;
+    datalist.appendChild(option);
+  });
+}
+
 function onLeagueChange() {
   currentLeague = leagueSelect.value;
   saveLeague(currentLeague);
-  if (currentFlips.length > 0) {
-    statusMessage.textContent = 'League changed. Click "Check Prices" to refresh data.';
-  }
+  currentFlips = [];
+  loadCardSuggestions();
+  statusMessage.textContent = 'League changed. Click "Check Prices" to refresh data.';
 }
 
 async function checkPrices() {
@@ -55,6 +66,7 @@ async function checkPrices() {
       buyPrice: item.buyPrice,
       divinePrice: item.divinePrice,
       stackSize: item.stackSize,
+      reward: item.reward,
       totalCostChaos: item.totalCostChaos,
       totalCostDivine: item.totalCostDivine
     }));
@@ -82,11 +94,14 @@ function displayResults(flips) {
     const totalChaos = flip.totalCostChaos !== null ? `${formatPrice(flip.totalCostChaos)}c` : '?';
     const totalDivine = flip.totalCostDivine !== null ? `${flip.totalCostDivine.toFixed(2)} div` : '?';
 
+    const rewardLabel = flip.reward ? sanitizeInput(flip.reward) : '?';
+
     row.innerHTML = `
       <td class="table__cell table__cell--name">${sanitizeInput(flip.cardName)}</td>
       <td class="table__cell table__cell--stack">${stackLabel}</td>
       <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c / ${flip.divinePrice.toFixed(2)} div</td>
       <td class="table__cell table__cell--total">${totalChaos} / ${totalDivine}</td>
+      <td class="table__cell table__cell--reward">${rewardLabel}</td>
     `;
 
     row.addEventListener('click', () => {
@@ -151,3 +166,4 @@ searchInput.addEventListener('keypress', (e) => {
 
 initializeLeagueSelector();
 renderHistory();
+loadCardSuggestions();

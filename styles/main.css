@@ -294,6 +294,11 @@ body {
   color: var(--color-warning);
 }
 
+.table__cell--reward {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
 .table__cell--profit {
   font-weight: 600;
 }

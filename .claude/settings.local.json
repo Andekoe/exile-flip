@@ -30,7 +30,16 @@
       "Bash(git restore *)",
       "Bash(git commit -m 'feat: add mock data for testing \\(poe.ninja API unavailable\\) *)",
       "Bash(git commit -m 'fix: use correct poe.ninja economy API endpoint *)",
-      "Bash(git commit -m 'fix: use thingproxy CORS proxy for poe.ninja API *)"
+      "Bash(git commit -m 'fix: use thingproxy CORS proxy for poe.ninja API *)",
+      "Bash(git rm *)",
+      "Bash(git commit *)",
+      "WebFetch(domain:www.poewiki.net)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:poe.ninja)",
+      "WebFetch(domain:poedb.tw)",
+      "WebSearch",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
