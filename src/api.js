@@ -1,20 +1,15 @@
 async function fetchDivinationPrices(league) {
   const url = `/api/proxy?league=${encodeURIComponent(league)}&type=DivinationCard`;
 
-  console.log('Fetching divination card prices');
-  console.log('Target URL:', url);
-
   try {
     const response = await fetch(url);
-    console.log('Response status:', response.status);
 
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('API Response:', data);
-    console.log('Found', data.exchange_rates?.length || 0, 'items');
+    console.log('Found', data.lines?.length || 0, 'divination cards');
     return parsePoeNinjaResponse(data);
   } catch (error) {
     console.error('Fetch error:', error);
