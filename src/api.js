@@ -24,6 +24,7 @@ function parsePoeNinjaResponse(data) {
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
     data.items.forEach(item => {
+      if (item.id === 'house-of-mirrors') console.log('Sample item entry:', item);
       itemMap[item.id] = item.name;
     });
 
