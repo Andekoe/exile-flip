@@ -10,6 +10,7 @@ async function fetchDivinationPrices(league) {
 
     const data = await response.json();
     console.log('Found', data.lines?.length || 0, 'divination cards');
+    console.log('Core rates:', data.core?.rates);
     return parsePoeNinjaResponse(data);
   } catch (error) {
     console.error('Fetch error:', error);
