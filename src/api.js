@@ -28,6 +28,9 @@ function parsePoeNinjaResponse(data) {
 
     data.lines.forEach(line => {
       const cardName = itemMap[line.id];
+      if (cardName === 'House of Mirrors') {
+        console.log('House of Mirrors raw data:', line);
+      }
       if (cardName && line.primaryValue !== undefined) {
         priceMap[cardName] = {
           chaos: line.primaryValue,
