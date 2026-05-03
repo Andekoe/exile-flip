@@ -81,11 +81,11 @@ const DIVINATION_CARDS = {
   }
 };
 
-const DEFAULT_LEAGUE = 'Softcore';
+const DEFAULT_LEAGUE = 'Mirage';
 
 const LEAGUES = [
-  'Hardcore',
-  'Softcore',
-  'Hardcore SSF',
-  'Softcore SSF'
+  'Mirage',
+  'Hardcore Mirage',
+  'Mirage SSF',
+  'Hardcore Mirage SSF'
 ];
