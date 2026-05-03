@@ -57,6 +57,10 @@ async function checkPrices() {
       buyPrice: item.buyPrice,
       sellPrice: item.sellPrice,
       divinePrice: item.divinePrice,
+      stackSize: item.stackSize,
+      totalCostChaos: item.totalCostChaos,
+      totalCostDivine: item.totalCostDivine,
+      reward: item.reward,
       profitPercent: calculateProfit(item.buyPrice, item.sellPrice)
     }));
 
@@ -69,6 +73,7 @@ async function checkPrices() {
       return;
     }
 
+    if (currentFlips.length > 0) console.log('Sample flip data:', currentFlips[0]);
     displayResults(filtered);
     statusMessage.textContent = `Found ${filtered.length} profitable flips.`;
   } catch (error) {

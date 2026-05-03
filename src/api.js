@@ -23,18 +23,26 @@ function parsePoeNinjaResponse(data) {
 
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
+    const itemMeta = {};
     data.items.forEach(item => {
-      if (item.id === 'house-of-mirrors') console.log('Sample item entry:', item);
-      itemMap[item.id] = item.name;
+      itemMeta[item.id] = { name: item.name, stackSize: item.stackSize ?? null, reward: item.reward ?? null };
     });
 
     data.lines.forEach(line => {
-      const cardName = itemMap[line.id];
+      const meta = itemMeta[line.id];
+      if (!meta) return;
 
-      if (cardName && line.primaryValue !== undefined) {
-        priceMap[cardName] = {
-          chaos: line.primaryValue,
-          divine: line.primaryValue * divineRate
+      const stackSize = meta.stackSize || 1;
+      const chaosPrice = line.primaryValue;
+
+      if (meta.name && chaosPrice !== undefined) {
+        priceMap[meta.name] = {
+          chaos: chaosPrice,
+          divine: chaosPrice * divineRate,
+          stackSize: meta.stackSize,
+          totalCostChaos: chaosPrice * stackSize,
+          totalCostDivine: chaosPrice * stackSize * divineRate,
+          reward: meta.reward
         };
       }
     });
@@ -58,7 +66,11 @@ async function getCardPrices(searchTerm, league) {
           cardName,
           buyPrice: prices.chaos,
           sellPrice: prices.chaos,
-          divinePrice: prices.divine
+          divinePrice: prices.divine,
+          stackSize: prices.stackSize,
+          totalCostChaos: prices.totalCostChaos,
+          totalCostDivine: prices.totalCostDivine,
+          reward: prices.reward
         });
       }
     });
