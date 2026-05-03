@@ -25,15 +25,17 @@ async function fetchDivinationPrices(league) {
 function parsePoeNinjaResponse(data) {
   const priceMap = {};
 
-  if (data.exchange_rates && Array.isArray(data.exchange_rates)) {
-    data.exchange_rates.forEach(item => {
-      if (item.info && item.info.name && item.pay_amount && item.receive_amount) {
-        const cardName = item.info.name;
-        const buyPrice = item.pay_amount || 0;
-        const sellPrice = item.receive_amount || 0;
+  if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
+    const itemMap = {};
+    data.items.forEach(item => {
+      itemMap[item.id] = item.name;
+    });
 
+    data.lines.forEach(line => {
+      const cardName = itemMap[line.id];
+      if (cardName && line.primaryValue !== undefined) {
         priceMap[cardName] = {
-          chaos: buyPrice,
+          chaos: line.primaryValue,
           exalted: 0
         };
       }
