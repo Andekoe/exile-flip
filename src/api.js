@@ -23,28 +23,25 @@ function parsePoeNinjaResponse(data) {
 
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
-    const itemMeta = {};
+    const itemMap = {};
     data.items.forEach(item => {
-      itemMeta[item.id] = { name: item.name, stackSize: item.stackSize ?? null, reward: item.reward ?? null };
+      itemMap[item.id] = item.name;
     });
 
     data.lines.forEach(line => {
-      const meta = itemMeta[line.id];
-      if (!meta) return;
+      const cardName = itemMap[line.id];
+      if (!cardName || line.primaryValue === undefined) return;
 
-      const stackSize = meta.stackSize || 1;
+      const stackSize = CARD_STACK_SIZES[cardName] ?? null;
       const chaosPrice = line.primaryValue;
 
-      if (meta.name && chaosPrice !== undefined) {
-        priceMap[meta.name] = {
-          chaos: chaosPrice,
-          divine: chaosPrice * divineRate,
-          stackSize: meta.stackSize,
-          totalCostChaos: chaosPrice * stackSize,
-          totalCostDivine: chaosPrice * stackSize * divineRate,
-          reward: meta.reward
-        };
-      }
+      priceMap[cardName] = {
+        chaos: chaosPrice,
+        divine: chaosPrice * divineRate,
+        stackSize,
+        totalCostChaos: stackSize !== null ? chaosPrice * stackSize : null,
+        totalCostDivine: stackSize !== null ? chaosPrice * stackSize * divineRate : null
+      };
     });
   }
 
@@ -65,12 +62,10 @@ async function getCardPrices(searchTerm, league) {
         results.push({
           cardName,
           buyPrice: prices.chaos,
-          sellPrice: prices.chaos,
           divinePrice: prices.divine,
           stackSize: prices.stackSize,
           totalCostChaos: prices.totalCostChaos,
-          totalCostDivine: prices.totalCostDivine,
-          reward: prices.reward
+          totalCostDivine: prices.totalCostDivine
         });
       }
     });

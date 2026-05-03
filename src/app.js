@@ -3,7 +3,6 @@ let currentLeague = getSavedLeague();
 
 const searchInput = document.getElementById('searchInput');
 const checkPricesBtn = document.getElementById('checkPricesBtn');
-const profitFilter = document.getElementById('profitFilter');
 const statusMessage = document.getElementById('statusMessage');
 const leagueSelect = document.getElementById('leagueSelect');
 const resultsTable = document.getElementById('resultsTable');
@@ -32,7 +31,6 @@ function onLeagueChange() {
 
 async function checkPrices() {
   const searchTerm = searchInput.value.trim();
-  const minProfit = parseFloat(profitFilter.value) || 0;
 
   if (!searchTerm) {
     statusMessage.textContent = 'Please enter a card name to search.';
@@ -55,27 +53,14 @@ async function checkPrices() {
     currentFlips = priceData.map(item => ({
       cardName: item.cardName,
       buyPrice: item.buyPrice,
-      sellPrice: item.sellPrice,
       divinePrice: item.divinePrice,
       stackSize: item.stackSize,
       totalCostChaos: item.totalCostChaos,
-      totalCostDivine: item.totalCostDivine,
-      reward: item.reward,
-      profitPercent: calculateProfit(item.buyPrice, item.sellPrice)
+      totalCostDivine: item.totalCostDivine
     }));
 
-    const filtered = filterFlips(currentFlips, minProfit, '');
-
-    if (filtered.length === 0) {
-      statusMessage.textContent = `Found ${currentFlips.length} cards, but none meet the ${minProfit}% profit threshold.`;
-      resultsTable.style.display = 'none';
-      noResults.style.display = 'block';
-      return;
-    }
-
-    if (currentFlips.length > 0) console.log('Sample flip data:', currentFlips[0]);
-    displayResults(filtered);
-    statusMessage.textContent = `Found ${filtered.length} profitable flips.`;
+    displayResults(currentFlips);
+    statusMessage.textContent = `Found ${currentFlips.length} card${currentFlips.length !== 1 ? 's' : ''}.`;
   } catch (error) {
     console.error('Check prices error:', error);
     statusMessage.textContent = `Error: ${error.message}`;
@@ -93,16 +78,15 @@ function displayResults(flips) {
     const row = document.createElement('tr');
     row.className = 'table__row';
 
-    const profitClass = flip.profitPercent >= 50 ? 'table__cell--high-profit' :
-                        flip.profitPercent >= 20 ? 'table__cell--med-profit' :
-                        'table__cell--low-profit';
+    const stackLabel = flip.stackSize !== null ? flip.stackSize : '?';
+    const totalChaos = flip.totalCostChaos !== null ? `${formatPrice(flip.totalCostChaos)}c` : '?';
+    const totalDivine = flip.totalCostDivine !== null ? `${flip.totalCostDivine.toFixed(2)} div` : '?';
 
     row.innerHTML = `
       <td class="table__cell table__cell--name">${sanitizeInput(flip.cardName)}</td>
-      <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c</td>
-      <td class="table__cell table__cell--divine">${flip.divinePrice.toFixed(2)} div</td>
-      <td class="table__cell table__cell--sell">${formatPrice(flip.sellPrice)}c</td>
-      <td class="table__cell table__cell--profit ${profitClass}">${flip.profitPercent.toFixed(1)}%</td>
+      <td class="table__cell table__cell--stack">${stackLabel}</td>
+      <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c / ${flip.divinePrice.toFixed(2)} div</td>
+      <td class="table__cell table__cell--total">${totalChaos} / ${totalDivine}</td>
     `;
 
     row.addEventListener('click', () => {
@@ -130,15 +114,18 @@ function renderHistory() {
     const historyItem = document.createElement('div');
     historyItem.className = 'history__item';
 
+    const totalLabel = item.totalCostDivine !== null
+      ? `${item.totalCostDivine.toFixed(1)} div set`
+      : `${formatPrice(item.buyPrice)}c/card`;
+
     historyItem.innerHTML = `
       <span class="history__card">${sanitizeInput(item.cardName)}</span>
-      <span class="history__profit">${item.profitPercent.toFixed(1)}%</span>
+      <span class="history__profit">${totalLabel}</span>
       <span class="history__time">${formatTime(item.timestamp)}</span>
     `;
 
     historyItem.addEventListener('click', () => {
       searchInput.value = item.cardName;
-      profitFilter.value = 0;
       checkPrices();
     });
 
@@ -146,44 +133,7 @@ function renderHistory() {
   });
 }
 
-function onProfitFilterChange() {
-  if (currentFlips.length === 0) return;
-
-  const minProfit = parseFloat(profitFilter.value) || 0;
-  const filtered = filterFlips(currentFlips, minProfit, searchInput.value);
-
-  if (filtered.length === 0) {
-    resultsTable.style.display = 'none';
-    noResults.style.display = 'block';
-    statusMessage.textContent = `No cards meet the ${minProfit}% profit threshold.`;
-    return;
-  }
-
-  displayResults(filtered);
-  statusMessage.textContent = `Showing ${filtered.length} of ${currentFlips.length} cards.`;
-}
-
-function onSearchChange() {
-  if (currentFlips.length === 0) return;
-
-  const minProfit = parseFloat(profitFilter.value) || 0;
-  const searchTerm = searchInput.value.trim();
-  const filtered = filterFlips(currentFlips, minProfit, searchTerm);
-
-  if (filtered.length === 0) {
-    resultsTable.style.display = 'none';
-    noResults.style.display = 'block';
-    statusMessage.textContent = 'No cards match your search.';
-    return;
-  }
-
-  displayResults(filtered);
-  statusMessage.textContent = `Showing ${filtered.length} of ${currentFlips.length} cards.`;
-}
-
 checkPricesBtn.addEventListener('click', checkPrices);
-profitFilter.addEventListener('input', onProfitFilterChange);
-searchInput.addEventListener('input', onSearchChange);
 leagueSelect.addEventListener('change', onLeagueChange);
 
 clearHistoryBtn.addEventListener('click', () => {

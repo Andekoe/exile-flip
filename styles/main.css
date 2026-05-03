@@ -278,15 +278,19 @@ body {
   flex: 1;
 }
 
+.table__cell--stack,
 .table__cell--buy,
-.table__cell--divine,
-.table__cell--sell,
-.table__cell--profit {
+.table__cell--total {
   text-align: right;
   white-space: nowrap;
 }
 
-.table__cell--divine {
+.table__cell--stack {
+  color: var(--color-text-muted);
+  width: 3rem;
+}
+
+.table__cell--total {
   color: var(--color-warning);
 }
 

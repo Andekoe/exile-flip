@@ -27,18 +27,6 @@
         </button>
       </div>
 
-      <div class="filter">
-        <label for="profitFilter" class="filter__label">Min Profit:</label>
-        <input
-          type="number"
-          id="profitFilter"
-          class="filter__input"
-          value="10"
-          min="0"
-          step="5"
-        >
-        <span class="filter__unit">%</span>
-      </div>
     </section>
 
     <section class="status">
@@ -58,10 +46,9 @@
         <thead>
           <tr class="table__header">
             <th class="table__cell table__cell--name">Card Name</th>
-            <th class="table__cell table__cell--buy">Chaos</th>
-            <th class="table__cell table__cell--divine">Divine</th>
-            <th class="table__cell table__cell--sell">Sell</th>
-            <th class="table__cell table__cell--profit">Profit %</th>
+            <th class="table__cell table__cell--stack">Stack</th>
+            <th class="table__cell table__cell--buy">Per Card</th>
+            <th class="table__cell table__cell--total">Full Set Cost</th>
           </tr>
         </thead>
         <tbody id="resultsBody">

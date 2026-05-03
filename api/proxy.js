@@ -1,30 +1,3 @@
-const WIKI_API = 'https://www.poewiki.net/w/api.php?action=cargoquery&format=json&limit=500&tables=divinationcards&fields=_pageName%3Dname%2Cstack_size%2Creward';
-
-async function fetchWikiCards() {
-  const response = await fetch(WIKI_API, {
-    headers: { 'User-Agent': 'exile-flip/1.0 (https://exile-flip.vercel.app; contact via github)' }
-  });
-  if (!response.ok) {
-    console.error('Wiki API error:', response.status);
-    return { _debug: `http error ${response.status}`, map: {} };
-  }
-
-  const data = await response.json();
-  console.log('Wiki raw sample:', JSON.stringify(data).slice(0, 500));
-
-  const map = {};
-  if (data.cargoquery) {
-    data.cargoquery.forEach(entry => {
-      const { name, stack_size, reward } = entry.title;
-      if (name) {
-        map[name] = { stackSize: parseInt(stack_size) || 1, reward: reward || null };
-      }
-    });
-  }
-
-  return { _debug: `${data.cargoquery?.length ?? 0} cards`, map };
-}
-
 export default async function handler(req, res) {
   const { league, type } = req.query;
 
@@ -32,32 +5,22 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing league or type parameter' });
   }
 
-  const ninjaUrl = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
+  const url = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
 
   try {
-    const [ninjaResponse, wikiResult] = await Promise.all([
-      fetch(ninjaUrl),
-      fetchWikiCards()
-    ]);
+    const response = await fetch(url);
 
-    if (!ninjaResponse.ok) {
-      return res.status(ninjaResponse.status).json({ error: `poe.ninja returned ${ninjaResponse.status}` });
+    if (!response.ok) {
+      return res.status(response.status).json({ error: `poe.ninja returned ${response.status}` });
     }
 
-    const data = await ninjaResponse.json();
-    const { _debug: wikiDebug, map: wikiCards } = wikiResult;
-
-    const enrichedItems = (data.items || []).map(item => ({
-      ...item,
-      stackSize: wikiCards[item.name]?.stackSize ?? null,
-      reward: wikiCards[item.name]?.reward ?? null
-    }));
+    const data = await response.json();
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'max-age=300');
-    res.json({ ...data, items: enrichedItems, _wikiDebug: wikiDebug });
+    res.json(data);
   } catch (error) {
     console.error('Proxy error:', error);
-    res.status(500).json({ error: `Failed to fetch data: ${error.message}` });
+    res.status(500).json({ error: `Failed to fetch from poe.ninja: ${error.message}` });
   }
 }
