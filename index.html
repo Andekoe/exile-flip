@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exile Flip — Path of Exile Currency Flipper</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">Exile Flip</h1>
+      <p class="app__subtitle">Divination Card Price Flipper</p>
+    </header>
+
+    <section class="controls">
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-box__input"
+          placeholder="Search divination cards..."
+          autocomplete="off"
+        >
+        <button id="checkPricesBtn" class="button button--primary">
+          Check Prices
+        </button>
+      </div>
+
+      <div class="filter">
+        <label for="profitFilter" class="filter__label">Min Profit:</label>
+        <input
+          type="number"
+          id="profitFilter"
+          class="filter__input"
+          value="10"
+          min="0"
+          step="5"
+        >
+        <span class="filter__unit">%</span>
+      </div>
+    </section>
+
+    <section class="status">
+      <p id="statusMessage" class="status__message"></p>
+      <p id="leagueDisplay" class="status__league"></p>
+    </section>
+
+    <section class="results">
+      <div id="noResults" class="results__empty">
+        <p>No results found. Try adjusting your filters.</p>
+      </div>
+
+      <table id="resultsTable" class="results__table" style="display: none;">
+        <thead>
+          <tr class="table__header">
+            <th class="table__cell table__cell--name">Card Name</th>
+            <th class="table__cell table__cell--buy">Buy Price</th>
+            <th class="table__cell table__cell--sell">Sell Price</th>
+            <th class="table__cell table__cell--profit">Profit %</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody">
+        </tbody>
+      </table>
+    </section>
+
+    <section class="history">
+      <h2 class="history__title">Recent Searches</h2>
+      <div id="historyList" class="history__list"></div>
+      <button id="clearHistoryBtn" class="button button--secondary">
+        Clear History
+      </button>
+    </section>
+  </main>
+
+  <script src="src/data.js"></script>
+  <script src="src/utils.js"></script>
+  <script src="src/api.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
