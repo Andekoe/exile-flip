@@ -1,182 +1,184 @@
-# exile-flip — Path of Exile Currency Flipping Tool
+# exile-flip — Path of Exile Divination Card Flipper
 
 ## Project Goal
-Build a lightweight browser-based tool that identifies profitable currency flipping opportunities in Path of Exile, starting with divination cards. Users manually check prices and see ranked opportunities to buy low and sell high for profit.
+A lightweight browser-based tool that identifies profitable divination card flipping opportunities in Path of Exile. Users search for cards, see the full set cost vs reward item value, and immediately know if a flip is profitable.
+
+Live at: **https://exile-flip.vercel.app/**
+Repo: **https://github.com/Andekoe/exile-flip**
 
 ---
 
-## Key Features
+## Current Status: Phase 1 Complete ✅
 
-### MVP (Phase 1)
-- **Divination Card Flipping:** Track ~50 popular div cards → match to result items
-- **Price Fetching:** Call poe.ninja API to get buy/sell prices
-- **League Detection:** Auto-detect current Softcore league
-- **Opportunity Ranking:** Show all flips ranked by profit % and absolute profit
-- **Manual Refresh:** User clicks button to check latest prices
-- **History Storage:** Track past flips in localStorage
-- **Filtering:** User can filter by profit threshold (5%, 10%, 20%, etc.)
-
-### Phase 2 (Future, not MVP)
-- Add other flip types (fossils, essences, seeds, etc.)
-- Auto-refresh with notifications
-- League switching (Hardcore, SSF variants)
-- Export/share opportunities
-- Price trend charts
+Phase 1 (MVP) is live. The app fetches real data from poe.ninja, shows full set costs, reward items, and profit/loss in both chaos and divine.
 
 ---
 
-## Non-Goals (Scope Control)
-- Real-time market monitoring (manual checking only for MVP)
-- Player-to-player trading automation
-- Requires authentication or user accounts
-- Backend server or database
-- Paid hosting or API services
-- Mobile app (web-responsive is enough)
-
----
-
-## Assumptions
-1. **poe.ninja API** is always available and has accurate pricing
-2. **Divination card outcomes** are deterministic and well-known (hardcoded mapping)
-3. **User has PoE knowledge** and understands flipping mechanics (no tutorial needed)
-4. **Users only care about instant buyout** (currency tab or player offline listings)
-5. **Current league is always Softcore** (auto-detected from poe.ninja)
-
----
-
-## Architecture Overview
+## Architecture
 
 ### Stack
-- **Frontend:** Vanilla HTML, CSS, JavaScript (no frameworks, no build)
-- **Hosting:** GitHub Pages (static site)
-- **Storage:** localStorage only
-- **API:** poe.ninja (public, no auth, rate-limit friendly)
+- **Frontend:** Vanilla HTML, CSS, JavaScript — no frameworks, no build step
+- **Backend:** Vercel serverless function (`/api/proxy.js`) — required to bypass poe.ninja CORS
+- **Hosting:** Vercel (free tier)
+- **Storage:** localStorage only (history, league preference)
+- **Data Sources:**
+  - poe.ninja — live card prices, item prices, divine exchange rate
+  - mikifriki/Divination-Cards (GitHub raw JSON) — stack sizes and reward names
+  - `src/data.js` CARD_FALLBACK — manual overrides for cards missing from the DB
 
 ### File Structure
 ```
 /exile-flip
-├── index.html          # Single-page app
+├── index.html              # Single-page app shell
 ├── styles/
-│   └── main.css       # All styling
+│   └── main.css            # Dark theme, CSS variables, mobile-first
 ├── src/
-│   ├── app.js         # Main app logic
-│   ├── api.js         # poe.ninja API calls
-│   ├── data.js        # Divination card mappings
-│   └── utils.js       # Helpers (formatting, filtering, etc)
-├── docs/
-│   └── API_NOTES.md   # API behavior & rate limits
-├── project_specs.md   # This file
-├── CLAUDE.md          # Agent rules
-├── README.md          # User guide
-└── .gitignore
+│   ├── app.js              # UI logic, event handlers, autocomplete
+│   ├── api.js              # poe.ninja API calls, price parsing, profit calc
+│   ├── data.js             # League list, CARD_FALLBACK overrides
+│   └── utils.js            # Formatting, localStorage helpers
+├── api/
+│   └── proxy.js            # Vercel serverless proxy (fetches poe.ninja + card DB)
+├── project_specs.md        # This file
+├── CLAUDE.md               # Agent rules
+└── README.md
 ```
 
----
-
-## Data Flow
-
+### Data Flow
 ```
+Page load
+  → loadCardSuggestions() fetches all card names silently
+  → Populates custom autocomplete dropdown
+
+User types card name
+  → Filtered suggestions appear (arrow keys / Enter / click to select)
+
 User clicks "Check Prices"
-    ↓
-app.js → api.js fetches poe.ninja data for all div cards
-    ↓
-app.js → Match card prices against result item prices
-    ↓
-Calculate profit % and absolute profit
-    ↓
-Rank by profitability, display table
-    ↓
-User filters by profit threshold or searches
-    ↓
-Store results in localStorage for history
+  → Vercel proxy (/api/proxy) called with league + type
+      → Fetches poe.ninja divination card data (prices, divine rate)
+      → Fetches mikifriki card DB (stack sizes, reward names)
+      → Fetches item prices: Currency, UniqueWeapon, UniqueArmour,
+        UniqueAccessory, UniqueFlask, UniqueJewel, UniqueMap,
+        SkillGem, Fragment, Scarab, Invitation
+      → Combines all data, returns enriched response
+  → Frontend parses response
+      → Price per card (chaos + divine)
+      → Full set cost = card price × stack size
+      → Reward value lookup:
+          - Direct name match in item prices
+          - Strips "Corrupted " prefix and retries
+          - Falls back to divination card price list
+      → Profit = reward value - full set cost
+  → Table rendered with all columns
+  → Click row → saves to history
 ```
 
 ---
 
-## API Design
+## Key Features (Implemented)
 
-### poe.ninja Endpoints Used
-1. **`/api/data/ItemOverview`**
-   - Fetches prices for a specific item type in a league
-   - Params: `type` (e.g., "DivinationCard"), `league` (e.g., "Affliction")
-   - Returns: Array of items with prices
+| Feature | Status |
+|---|---|
+| Real poe.ninja price data | ✅ |
+| Vercel proxy (CORS bypass) | ✅ |
+| Price per card in chaos and divine | ✅ |
+| Stack size per card | ✅ (community DB + fallback map) |
+| Full set cost in chaos and divine | ✅ |
+| Reward item name | ✅ |
+| Profit / loss in chaos and divine | ✅ (green = profit, red = loss) |
+| Handles corrupted reward names (e.g. Corrupted Headhunter) | ✅ |
+| Handles div card rewards (e.g. 9x House of Mirrors) | ✅ |
+| Autocomplete with keyboard nav (↑ ↓ Enter Esc) | ✅ |
+| League selector (Mirage, HC Mirage, SSF variants) | ✅ |
+| League preference saved in localStorage | ✅ |
+| Search history (last 10, click to re-run) | ✅ |
+| Mobile responsive (390px+) | ✅ |
+| Dark theme | ✅ |
 
-### Internal Data Structure
-```javascript
-// Divination card mapping
-{
-  "The Wrath": {
-    result: "Wrath",
-    resultType: "Gem"
-  },
-  "Struck by Lightning": {
-    result: "Lightning Damage",
-    resultType: "Modifier"
-  }
-  // ... ~50 cards
-}
+---
 
-// Flip opportunity (calculated)
-{
-  card: "The Wrath",
-  buyPrice: 15,
-  resultValue: 40,
-  profit: 25,
-  profitPercent: 166.67,
-  league: "Affliction"
-}
+## Known Limitations
+
+### Card Data Gaps
+The community card DB (mikifriki/Divination-Cards) is not always up to date. Cards added in recent leagues may be missing stack size or reward data. Workaround: add to `CARD_FALLBACK` in `src/data.js`.
+
+### Reward Pricing Gaps
+Some reward types are not priced by poe.ninja in a way we can look up automatically:
+- Random rewards ("Random Unique Item", "Random Currency")
+- Very new unique items not yet indexed
+- Non-standard rewards (e.g. passive tree nodes, skins)
+
+These show `?` for profit.
+
+### League Names
+League names change every ~3 months when GGG releases a new expansion. Update `LEAGUES` and `DEFAULT_LEAGUE` in `src/data.js` at league start.
+
+### No Buy/Sell Spread
+We use poe.ninja's `primaryValue` (market rate) for both cost and reward. Real trades include a spread — actual profit will be slightly lower than shown.
+
+---
+
+## Roadmap
+
+### Phase 2 — Data Quality
+- [ ] Find or build a more complete, maintained card DB (stack sizes + rewards for all ~325 cards)
+- [ ] Auto-detect new league names from poe.ninja instead of hardcoding
+- [ ] Show reward item price alongside reward name so user can cross-check
+- [ ] Handle multi-item rewards more accurately (e.g. "6x Chaos Orb" quantity parsing)
+
+### Phase 3 — UX Polish
+- [ ] Sort table by profit / set cost / card name
+- [ ] Filter by min profit threshold
+- [ ] Show profit % (not just absolute)
+- [ ] Highlight cards where full set cost < reward value (profitable flips only mode)
+- [ ] Show price trend / 7-day change (poe.ninja sparkline data available)
+- [ ] Card image on hover (poe.ninja has image URLs)
+
+### Phase 4 — Scope Expansion
+- [ ] Currency flipping (buy X, sell Y)
+- [ ] Scarab / fossil / essence flip tracking
+- [ ] Other item types (bases, gems)
+- [ ] Auto-refresh with configurable interval
+- [ ] Export results as CSV
+
+### Phase 5 — Infrastructure (if needed)
+- [ ] Cache poe.ninja responses server-side to reduce cold start latency
+- [ ] Rate limit protection on the Vercel proxy
+- [ ] Add automated tests for profit calculation logic
+
+---
+
+## API Notes
+
+### poe.ninja Endpoint
 ```
+GET https://poe.ninja/poe1/api/economy/exchange/current/overview
+  ?league=Mirage
+  &type=DivinationCard
+```
+Response: `{ core: { rates: { divine: 0.00258 } }, lines: [...], items: [...] }`
+- `lines[n].primaryValue` = price per card in chaos
+- `core.rates.divine` = chaos-to-divine rate (multiply chaos by this to get divines)
+- `items[n].name` = card display name matched to lines by `id`
+
+### Reward Lookup
+We fetch 10 additional poe.ninja endpoints in parallel (Currency, UniqueWeapon, etc.) and build a name→chaosPrice map. Reward names from the card DB are matched against this map, with fallbacks for corrupted prefixes and divination card rewards.
+
+### Card Metadata Source
+```
+GET https://raw.githubusercontent.com/mikifriki/Divination-Cards/master/db.json
+```
+Fields used: `name`, `amount` (stack size), `item` (reward name)
 
 ---
 
-## Critical Paths to Test (Post-Implementation)
+## Decisions Log
 
-1. **League Auto-Detection**
-   - App fetches current league from poe.ninja correctly
-   - Falls back gracefully if API fails
-
-2. **Price Fetching**
-   - Divination card prices fetch correctly
-   - Result item prices match correctly
-   - Handles missing items (some cards have no valid result)
-
-3. **Profit Calculation**
-   - Math is correct: profit = resultPrice - cardPrice
-   - profitPercent = (profit / cardPrice) * 100
-   - Sorts correctly by both absolute and percentage
-
-4. **Data Persistence**
-   - History saves to localStorage without corruption
-   - Survives page reload
-   - User can clear history
-
-5. **Filtering & Search**
-   - Threshold filter works (hide flips below X%)
-   - Search by card name works
-   - Filters combine correctly
-
----
-
-## Risks & Unknowns
-
-1. **poe.ninja Rate Limits:** Unknown exact limits; may need caching
-   - Mitigation: Cache results for 5-10 minutes, show cache timestamp
-
-2. **Divination Card Mapping Maintenance:** Manual updates needed when cards change
-   - Mitigation: Link to community wiki for manual updates if needed
-
-3. **League Names Change:** May need to adjust league detection logic
-   - Mitigation: Allow user to manually select league as fallback
-
-4. **Item Pricing Volatility:** Prices change rapidly; data stales fast
-   - Mitigation: Show timestamp, encourage frequent refreshes
-
----
-
-## Future Improvements (Post-MVP)
-- Add fossils, essences, seeds, other flip types
-- Auto-refresh with browser notifications
-- Dark mode
-- Profit calculator per flip (quantity needed, profit target)
-- Community crowdsourced flip ideas
-- Mobile app wrapper
+| Decision | Reason |
+|---|---|
+| Vercel over GitHub Pages | GitHub Pages can't run server-side code; Vercel needed for CORS proxy |
+| Vanilla JS, no framework | CLAUDE.md constraint; no build step keeps deployment trivial |
+| Community card DB over hardcoded | 325+ cards — hardcoding is unmaintainable |
+| CARD_FALLBACK in data.js | Cards missing from community DB can be patched without changing architecture |
+| localStorage only | No backend, no user accounts, no ops overhead |
+| Manual refresh only | Avoids rate limits; user-triggered is good enough for MVP |
