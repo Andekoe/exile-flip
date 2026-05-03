@@ -1,23 +1,18 @@
-const POE_NINJA_URL = 'https://poe.ninja/poe1/api/economy/exchange/current/overview';
-const CORS_PROXY = 'https://allorigins.min.com/get?url=';
-
 async function fetchDivinationPrices(league) {
-  const poeUrl = `${POE_NINJA_URL}?league=${encodeURIComponent(league)}&type=DivinationCard`;
-  const proxiedUrl = CORS_PROXY + encodeURIComponent(poeUrl);
+  const url = `/api/proxy?league=${encodeURIComponent(league)}&type=DivinationCard`;
 
-  console.log('Fetching from poe.ninja (via CORS proxy)');
-  console.log('Target URL:', poeUrl);
+  console.log('Fetching divination card prices');
+  console.log('Target URL:', url);
 
   try {
-    const response = await fetch(proxiedUrl);
+    const response = await fetch(url);
     console.log('Response status:', response.status);
 
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
     }
 
-    const proxyData = await response.json();
-    const data = JSON.parse(proxyData.contents);
+    const data = await response.json();
     console.log('Found', data.exchange_rates?.length || 0, 'items');
     return parsePoeNinjaResponse(data);
   } catch (error) {
