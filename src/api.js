@@ -13,6 +13,7 @@ async function fetchDivinationPrices(league) {
     }
 
     const data = await response.json();
+    console.log('API Response:', data);
     console.log('Found', data.exchange_rates?.length || 0, 'items');
     return parsePoeNinjaResponse(data);
   } catch (error) {
