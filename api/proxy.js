@@ -1,7 +1,9 @@
 const WIKI_API = 'https://www.poewiki.net/w/api.php?action=cargoquery&format=json&limit=500&tables=divinationcards&fields=_pageName%3Dname%2Cstack_size%2Creward';
 
 async function fetchWikiCards() {
-  const response = await fetch(WIKI_API);
+  const response = await fetch(WIKI_API, {
+    headers: { 'User-Agent': 'exile-flip/1.0 (https://exile-flip.vercel.app; contact via github)' }
+  });
   if (!response.ok) {
     console.error('Wiki API error:', response.status);
     return { _debug: `http error ${response.status}`, map: {} };
