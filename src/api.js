@@ -9,7 +9,7 @@ async function fetchDivinationPrices(league) {
     }
 
     const data = await response.json();
-    console.log('Found', data.lines?.length || 0, 'divination cards');
+    console.log('Found', data.lines?.length || 0, 'divination cards, wiki debug:', data._wikiDebug);
     return parsePoeNinjaResponse(data);
   } catch (error) {
     console.error('Fetch error:', error);

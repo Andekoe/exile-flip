@@ -2,24 +2,25 @@ const WIKI_API = 'https://www.poewiki.net/w/api.php?action=cargoquery&format=jso
 
 async function fetchWikiCards() {
   const response = await fetch(WIKI_API);
-  if (!response.ok) return {};
+  if (!response.ok) {
+    console.error('Wiki API error:', response.status);
+    return { _debug: `http error ${response.status}`, map: {} };
+  }
 
   const data = await response.json();
-  const map = {};
+  console.log('Wiki raw sample:', JSON.stringify(data).slice(0, 500));
 
+  const map = {};
   if (data.cargoquery) {
     data.cargoquery.forEach(entry => {
       const { name, stack_size, reward } = entry.title;
       if (name) {
-        map[name] = {
-          stackSize: parseInt(stack_size) || 1,
-          reward: reward || null
-        };
+        map[name] = { stackSize: parseInt(stack_size) || 1, reward: reward || null };
       }
     });
   }
 
-  return map;
+  return { _debug: `${data.cargoquery?.length ?? 0} cards`, map };
 }
 
 export default async function handler(req, res) {
@@ -32,7 +33,7 @@ export default async function handler(req, res) {
   const ninjaUrl = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
 
   try {
-    const [ninjaResponse, wikiCards] = await Promise.all([
+    const [ninjaResponse, wikiResult] = await Promise.all([
       fetch(ninjaUrl),
       fetchWikiCards()
     ]);
@@ -42,6 +43,7 @@ export default async function handler(req, res) {
     }
 
     const data = await ninjaResponse.json();
+    const { _debug: wikiDebug, map: wikiCards } = wikiResult;
 
     const enrichedItems = (data.items || []).map(item => ({
       ...item,
@@ -51,7 +53,7 @@ export default async function handler(req, res) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'max-age=300');
-    res.json({ ...data, items: enrichedItems });
+    res.json({ ...data, items: enrichedItems, _wikiDebug: wikiDebug });
   } catch (error) {
     console.error('Proxy error:', error);
     res.status(500).json({ error: `Failed to fetch data: ${error.message}` });
