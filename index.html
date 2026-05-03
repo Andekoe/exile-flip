@@ -15,15 +15,16 @@
 
     <section class="controls">
       <div class="search-box">
-        <input
-          type="text"
-          id="searchInput"
-          class="search-box__input"
-          placeholder="Search divination cards..."
-          list="cardSuggestions"
-          autocomplete="off"
-        >
-        <datalist id="cardSuggestions"></datalist>
+        <div class="search-box__field">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-box__input"
+            placeholder="Search divination cards..."
+            autocomplete="off"
+          >
+          <ul id="cardSuggestions" class="suggestions" hidden></ul>
+        </div>
         <button id="checkPricesBtn" class="button button--primary">
           Check Prices
         </button>

@@ -21,15 +21,59 @@ function initializeLeagueSelector() {
   leagueSelect.value = currentLeague;
 }
 
+let allCardNames = [];
+let activeIndex = -1;
+const suggestionsEl = document.getElementById('cardSuggestions');
+
 async function loadCardSuggestions() {
-  const datalist = document.getElementById('cardSuggestions');
-  const names = await fetchAllCardNames(currentLeague);
-  datalist.innerHTML = '';
-  names.forEach(name => {
-    const option = document.createElement('option');
-    option.value = name;
-    datalist.appendChild(option);
+  allCardNames = await fetchAllCardNames(currentLeague);
+}
+
+function showSuggestions(query) {
+  activeIndex = -1;
+  if (!query) { hideSuggestions(); return; }
+
+  const matches = allCardNames
+    .filter(n => n.toLowerCase().includes(query.toLowerCase()))
+    .slice(0, 20);
+
+  if (matches.length === 0) { hideSuggestions(); return; }
+
+  suggestionsEl.innerHTML = '';
+  matches.forEach((name, i) => {
+    const li = document.createElement('li');
+    li.className = 'suggestions__item';
+    li.textContent = name;
+    li.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      selectSuggestion(name);
+    });
+    suggestionsEl.appendChild(li);
   });
+  suggestionsEl.hidden = false;
+}
+
+function hideSuggestions() {
+  suggestionsEl.hidden = true;
+  activeIndex = -1;
+}
+
+function selectSuggestion(name) {
+  searchInput.value = name;
+  hideSuggestions();
+  checkPrices();
+}
+
+function navigateSuggestions(direction) {
+  const items = suggestionsEl.querySelectorAll('.suggestions__item');
+  if (items.length === 0) return;
+
+  items[activeIndex]?.classList.remove('suggestions__item--active');
+  activeIndex = Math.max(-1, Math.min(items.length - 1, activeIndex + direction));
+  if (activeIndex >= 0) {
+    items[activeIndex].classList.add('suggestions__item--active');
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
 }
 
 function onLeagueChange() {
@@ -169,9 +213,23 @@ clearHistoryBtn.addEventListener('click', () => {
   }
 });
 
-searchInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    checkPrices();
+searchInput.addEventListener('input', () => showSuggestions(searchInput.value.trim()));
+searchInput.addEventListener('focus', () => showSuggestions(searchInput.value.trim()));
+searchInput.addEventListener('blur', () => setTimeout(hideSuggestions, 150));
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') { e.preventDefault(); navigateSuggestions(1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); navigateSuggestions(-1); }
+  else if (e.key === 'Enter') {
+    const items = suggestionsEl.querySelectorAll('.suggestions__item');
+    if (activeIndex >= 0 && items[activeIndex]) {
+      selectSuggestion(items[activeIndex].textContent);
+    } else {
+      hideSuggestions();
+      checkPrices();
+    }
+  } else if (e.key === 'Escape') {
+    hideSuggestions();
   }
 });
 

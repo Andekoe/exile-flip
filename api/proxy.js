@@ -62,13 +62,18 @@ export default async function handler(req, res) {
   const ninjaUrl = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
 
   try {
-    const [ninjaResponse, cardMeta, currencyPrices, uniqueWeaponPrices, uniqueArmourPrices, uniqueAccessoryPrices] = await Promise.all([
+    const [ninjaResponse, cardMeta, ...priceMaps] = await Promise.all([
       fetch(ninjaUrl),
       fetchCardMetadata(),
       fetchItemPrices(league, 'Currency'),
       fetchItemPrices(league, 'UniqueWeapon'),
       fetchItemPrices(league, 'UniqueArmour'),
-      fetchItemPrices(league, 'UniqueAccessory')
+      fetchItemPrices(league, 'UniqueAccessory'),
+      fetchItemPrices(league, 'UniqueFlask'),
+      fetchItemPrices(league, 'UniqueJewel'),
+      fetchItemPrices(league, 'UniqueMap'),
+      fetchItemPrices(league, 'SkillGem'),
+      fetchItemPrices(league, 'Fragment'),
     ]);
 
     if (!ninjaResponse.ok) {
@@ -76,7 +81,7 @@ export default async function handler(req, res) {
     }
 
     const data = await ninjaResponse.json();
-    const allItemPrices = { ...currencyPrices, ...uniqueWeaponPrices, ...uniqueArmourPrices, ...uniqueAccessoryPrices };
+    const allItemPrices = Object.assign({}, ...priceMaps);
 
     const enrichedItems = (data.items || []).map(item => {
       const meta = cardMeta[item.name] || {};
