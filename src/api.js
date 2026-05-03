@@ -1,45 +1,47 @@
-const MOCK_PRICES = {
-  'The Gambler': { chaos: 5, exalted: 0 },
-  'Echoes of Betrayal': { chaos: 15, exalted: 0 },
-  'The Forsaken Shrine': { chaos: 8, exalted: 0 },
-  'House of Mirrors': { chaos: 200, exalted: 2 },
-  'The Nurse': { chaos: 85, exalted: 1 },
-  'Fiend': { chaos: 12, exalted: 0 },
-  'Omnium': { chaos: 45, exalted: 0 },
-  "Saint's Treasure": { chaos: 22, exalted: 0 },
-  'The Void': { chaos: 3, exalted: 0 },
-  'Wealth': { chaos: 18, exalted: 0 },
-  'The Feast': { chaos: 6, exalted: 0 },
-  'Dying Wish': { chaos: 25, exalted: 0 },
-  'Seeker': { chaos: 35, exalted: 0 },
-  'The Tyrant': { chaos: 120, exalted: 1 },
-  'Unbridled Avarice': { chaos: 42, exalted: 0 },
-  'Trash to Treasure': { chaos: 16, exalted: 0 },
-  'The Inventory': { chaos: 9, exalted: 0 },
-  'Gift to the Goddess': { chaos: 180, exalted: 1 },
-  'Destiny': { chaos: 50, exalted: 0 },
-  "The Dragon's Heart": { chaos: 65, exalted: 0 }
-};
+const POE_NINJA_BASE = 'https://poe.ninja/poe1/api/economy/exchange/current/overview';
 
 async function fetchDivinationPrices(league) {
-  console.log('Using mock price data (poe.ninja API unavailable)');
-  return MOCK_PRICES;
+  const url = `${POE_NINJA_BASE}?league=${encodeURIComponent(league)}&type=DivinationCard`;
+  console.log('Fetching from:', url);
+
+  try {
+    const response = await fetch(url);
+    console.log('Response status:', response.status);
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Found', data.exchange_rates?.length || 0, 'items');
+    return parsePoeNinjaResponse(data);
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw new Error(`Failed to fetch from poe.ninja: ${error.message}`);
+  }
 }
 
 function parsePoeNinjaResponse(data) {
-  if (!data.lines || !Array.isArray(data.lines)) {
-    throw new Error('Invalid response format');
+  const priceMap = {};
+
+  if (data.exchange_rates && Array.isArray(data.exchange_rates)) {
+    data.exchange_rates.forEach(item => {
+      if (item.info && item.info.name && item.pay_amount && item.receive_amount) {
+        const cardName = item.info.name;
+        const buyPrice = item.pay_amount || 0;
+        const sellPrice = item.receive_amount || 0;
+
+        priceMap[cardName] = {
+          chaos: buyPrice,
+          exalted: 0
+        };
+      }
+    });
   }
 
-  const priceMap = {};
-  data.lines.forEach(item => {
-    if (item.name && item.chaosValue) {
-      priceMap[item.name] = {
-        chaos: typeof item.chaosValue === 'number' ? item.chaosValue : 0,
-        exalted: item.exaltedValue || 0
-      };
-    }
-  });
+  if (Object.keys(priceMap).length === 0) {
+    throw new Error('No price data found in response');
+  }
 
   return priceMap;
 }
