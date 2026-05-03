@@ -1,5 +1,5 @@
 const POE_NINJA_URL = 'https://poe.ninja/poe1/api/economy/exchange/current/overview';
-const CORS_PROXY = 'https://api.allorigins.min.com/get?url=';
+const CORS_PROXY = 'https://allorigins.min.com/get?url=';
 
 async function fetchDivinationPrices(league) {
   const poeUrl = `${POE_NINJA_URL}?league=${encodeURIComponent(league)}&type=DivinationCard`;
