@@ -22,7 +22,13 @@
       "Bash(git commit -m 'fix: add CORS proxy for local testing *)",
       "PowerShell(\"App updated with CORS proxy for local testing\")",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(gh repo *)",
+      "Bash(git restore *)",
+      "Bash(git commit -m 'feat: add mock data for testing \\(poe.ninja API unavailable\\) *)"
     ]
   }
 }
