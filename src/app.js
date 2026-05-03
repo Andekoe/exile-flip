@@ -43,18 +43,14 @@ async function checkPrices() {
   checkPricesBtn.disabled = true;
 
   try {
-    const cardNames = Object.keys(DIVINATION_CARDS).filter(name =>
-      name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const priceData = await getCardPrices(searchTerm, currentLeague);
 
-    if (cardNames.length === 0) {
+    if (priceData.length === 0) {
       statusMessage.textContent = 'No divination cards found matching your search.';
       resultsTable.style.display = 'none';
       noResults.style.display = 'block';
       return;
     }
-
-    const priceData = await getCardPrices(cardNames, currentLeague);
 
     currentFlips = priceData.map(item => ({
       cardName: item.cardName,

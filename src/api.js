@@ -47,18 +47,18 @@ function parsePoeNinjaResponse(data) {
   return priceMap;
 }
 
-async function getCardPrices(cardNames, league) {
+async function getCardPrices(searchTerm, league) {
   try {
     const priceMap = await fetchDivinationPrices(league);
     const results = [];
 
-    cardNames.forEach(cardName => {
-      if (priceMap[cardName]) {
+    Object.entries(priceMap).forEach(([cardName, prices]) => {
+      if (cardName.toLowerCase().includes(searchTerm.toLowerCase())) {
         results.push({
           cardName,
-          buyPrice: priceMap[cardName].chaos,
-          sellPrice: priceMap[cardName].chaos,
-          divinePrice: priceMap[cardName].divine
+          buyPrice: prices.chaos,
+          sellPrice: prices.chaos,
+          divinePrice: prices.divine
         });
       }
     });
