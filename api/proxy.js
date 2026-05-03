@@ -19,6 +19,39 @@ async function fetchCardMetadata() {
   }
 }
 
+async function fetchItemPrices(league, type) {
+  try {
+    const url = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
+    const response = await fetch(url);
+    if (!response.ok) return {};
+
+    const data = await response.json();
+    const priceMap = {};
+
+    const items = data.items || [];
+    const lines = data.lines || [];
+    const idToName = {};
+    items.forEach(item => { idToName[item.id] = item.name; });
+    lines.forEach(line => {
+      const name = idToName[line.id];
+      if (name && line.primaryValue !== undefined) priceMap[name] = line.primaryValue;
+    });
+
+    return priceMap;
+  } catch {
+    return {};
+  }
+}
+
+// Parse reward text to extract quantity and item name
+// e.g. "10x Chaos Orb" → { qty: 10, name: "Chaos Orb" }
+function parseReward(rewardText) {
+  if (!rewardText) return { qty: 1, name: null };
+  const match = rewardText.match(/^(\d+)[x×]\s*(.+)$/i);
+  if (match) return { qty: parseInt(match[1]), name: match[2].trim() };
+  return { qty: 1, name: rewardText.trim() };
+}
+
 export default async function handler(req, res) {
   const { league, type } = req.query;
 
@@ -29,9 +62,13 @@ export default async function handler(req, res) {
   const ninjaUrl = `https://poe.ninja/poe1/api/economy/exchange/current/overview?league=${encodeURIComponent(league)}&type=${encodeURIComponent(type)}`;
 
   try {
-    const [ninjaResponse, cardMeta] = await Promise.all([
+    const [ninjaResponse, cardMeta, currencyPrices, uniqueWeaponPrices, uniqueArmourPrices, uniqueAccessoryPrices] = await Promise.all([
       fetch(ninjaUrl),
-      fetchCardMetadata()
+      fetchCardMetadata(),
+      fetchItemPrices(league, 'Currency'),
+      fetchItemPrices(league, 'UniqueWeapon'),
+      fetchItemPrices(league, 'UniqueArmour'),
+      fetchItemPrices(league, 'UniqueAccessory')
     ]);
 
     if (!ninjaResponse.ok) {
@@ -39,14 +76,21 @@ export default async function handler(req, res) {
     }
 
     const data = await ninjaResponse.json();
-    const metaCount = Object.keys(cardMeta).length;
-    console.log(`Card metadata loaded: ${metaCount} cards`);
+    const allItemPrices = { ...currencyPrices, ...uniqueWeaponPrices, ...uniqueArmourPrices, ...uniqueAccessoryPrices };
 
-    const enrichedItems = (data.items || []).map(item => ({
-      ...item,
-      stackSize: cardMeta[item.name]?.stackSize ?? null,
-      reward: cardMeta[item.name]?.reward ?? null
-    }));
+    const enrichedItems = (data.items || []).map(item => {
+      const meta = cardMeta[item.name] || {};
+      const { qty, name: rewardName } = parseReward(meta.reward);
+      const rewardUnitPrice = rewardName ? (allItemPrices[rewardName] ?? null) : null;
+      const rewardValue = rewardUnitPrice !== null ? rewardUnitPrice * qty : null;
+
+      return {
+        ...item,
+        stackSize: meta.stackSize ?? null,
+        reward: meta.reward ?? null,
+        rewardValue
+      };
+    });
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'max-age=300');

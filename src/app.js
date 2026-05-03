@@ -67,8 +67,11 @@ async function checkPrices() {
       divinePrice: item.divinePrice,
       stackSize: item.stackSize,
       reward: item.reward,
+      rewardValue: item.rewardValue,
       totalCostChaos: item.totalCostChaos,
-      totalCostDivine: item.totalCostDivine
+      totalCostDivine: item.totalCostDivine,
+      profitChaos: item.profitChaos,
+      profitDivine: item.profitDivine
     }));
 
     displayResults(currentFlips);
@@ -93,8 +96,15 @@ function displayResults(flips) {
     const stackLabel = flip.stackSize !== null ? flip.stackSize : '?';
     const totalChaos = flip.totalCostChaos !== null ? `${formatPrice(flip.totalCostChaos)}c` : '?';
     const totalDivine = flip.totalCostDivine !== null ? `${flip.totalCostDivine.toFixed(2)} div` : '?';
-
     const rewardLabel = flip.reward ? sanitizeInput(flip.reward) : '?';
+
+    let profitLabel = '?';
+    let profitClass = '';
+    if (flip.profitChaos !== null) {
+      const sign = flip.profitChaos >= 0 ? '+' : '';
+      profitLabel = `${sign}${formatPrice(flip.profitChaos)}c / ${sign}${flip.profitDivine.toFixed(2)} div`;
+      profitClass = flip.profitChaos >= 0 ? 'table__cell--profitable' : 'table__cell--loss';
+    }
 
     row.innerHTML = `
       <td class="table__cell table__cell--name">${sanitizeInput(flip.cardName)}</td>
@@ -102,6 +112,7 @@ function displayResults(flips) {
       <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c / ${flip.divinePrice.toFixed(2)} div</td>
       <td class="table__cell table__cell--total">${totalChaos} / ${totalDivine}</td>
       <td class="table__cell table__cell--reward">${rewardLabel}</td>
+      <td class="table__cell table__cell--profit ${profitClass}">${profitLabel}</td>
     `;
 
     row.addEventListener('click', () => {

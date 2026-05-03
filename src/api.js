@@ -35,23 +35,33 @@ function parsePoeNinjaResponse(data) {
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
     data.items.forEach(item => {
-      itemMap[item.id] = { name: item.name, stackSize: item.stackSize ?? null, reward: item.reward ?? null };
+      itemMap[item.id] = {
+        name: item.name,
+        stackSize: item.stackSize ?? null,
+        reward: item.reward ?? null,
+        rewardValue: item.rewardValue ?? null
+      };
     });
 
     data.lines.forEach(line => {
       const meta = itemMap[line.id];
       if (!meta || line.primaryValue === undefined) return;
 
-      const { name: cardName, stackSize, reward } = meta;
+      const { name: cardName, stackSize, reward, rewardValue } = meta;
       const chaosPrice = line.primaryValue;
+      const totalCostChaos = stackSize !== null ? chaosPrice * stackSize : null;
+      const profitChaos = totalCostChaos !== null && rewardValue !== null ? rewardValue - totalCostChaos : null;
 
       priceMap[cardName] = {
         chaos: chaosPrice,
         divine: chaosPrice * divineRate,
         stackSize,
         reward,
-        totalCostChaos: stackSize !== null ? chaosPrice * stackSize : null,
-        totalCostDivine: stackSize !== null ? chaosPrice * stackSize * divineRate : null
+        rewardValue,
+        totalCostChaos,
+        totalCostDivine: totalCostChaos !== null ? totalCostChaos * divineRate : null,
+        profitChaos,
+        profitDivine: profitChaos !== null ? profitChaos * divineRate : null
       };
     });
   }
@@ -76,8 +86,11 @@ async function getCardPrices(searchTerm, league) {
           divinePrice: prices.divine,
           stackSize: prices.stackSize,
           reward: prices.reward,
+          rewardValue: prices.rewardValue,
           totalCostChaos: prices.totalCostChaos,
-          totalCostDivine: prices.totalCostDivine
+          totalCostDivine: prices.totalCostDivine,
+          profitChaos: prices.profitChaos,
+          profitDivine: prices.profitDivine
         });
       }
     });

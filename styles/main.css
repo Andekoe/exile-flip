@@ -300,6 +300,20 @@ body {
 }
 
 .table__cell--profit {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.table__cell--profitable {
+  color: var(--color-success);
+}
+
+.table__cell--loss {
+  color: var(--color-danger);
+}
+
+.table__cell--profit {
   font-weight: 600;
 }
 
