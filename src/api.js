@@ -9,7 +9,7 @@ async function fetchDivinationPrices(league) {
     }
 
     const data = await response.json();
-    console.log('Found', data.lines?.length || 0, 'divination cards, wiki debug:', data._wikiDebug);
+    console.log('Found', data.lines?.length || 0, 'divination cards');
     return parsePoeNinjaResponse(data);
   } catch (error) {
     console.error('Fetch error:', error);
@@ -22,7 +22,6 @@ function parsePoeNinjaResponse(data) {
   const divineRate = data.core?.rates?.divine || 0;
 
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
-    const itemMap = {};
     const itemMap = {};
     data.items.forEach(item => {
       itemMap[item.id] = item.name;
