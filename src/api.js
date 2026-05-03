@@ -1,11 +1,15 @@
-const POE_NINJA_BASE = 'https://poe.ninja/poe1/api/economy/exchange/current/overview';
+const POE_NINJA_URL = 'https://poe.ninja/poe1/api/economy/exchange/current/overview';
+const CORS_PROXY = 'https://thingproxy.freeboard.io/fetch/';
 
 async function fetchDivinationPrices(league) {
-  const url = `${POE_NINJA_BASE}?league=${encodeURIComponent(league)}&type=DivinationCard`;
-  console.log('Fetching from:', url);
+  const poeUrl = `${POE_NINJA_URL}?league=${encodeURIComponent(league)}&type=DivinationCard`;
+  const proxiedUrl = CORS_PROXY + encodeURIComponent(poeUrl);
+
+  console.log('Fetching from poe.ninja (via CORS proxy)');
+  console.log('Target URL:', poeUrl);
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(proxiedUrl);
     console.log('Response status:', response.status);
 
     if (!response.ok) {
