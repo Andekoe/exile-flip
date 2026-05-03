@@ -5,15 +5,29 @@ const searchInput = document.getElementById('searchInput');
 const checkPricesBtn = document.getElementById('checkPricesBtn');
 const profitFilter = document.getElementById('profitFilter');
 const statusMessage = document.getElementById('statusMessage');
-const leagueDisplay = document.getElementById('leagueDisplay');
+const leagueSelect = document.getElementById('leagueSelect');
 const resultsTable = document.getElementById('resultsTable');
 const noResults = document.getElementById('noResults');
 const resultsBody = document.getElementById('resultsBody');
 const historyList = document.getElementById('historyList');
 const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 
-function displayLeague() {
-  leagueDisplay.textContent = `League: ${currentLeague}`;
+function initializeLeagueSelector() {
+  LEAGUES.forEach(league => {
+    const option = document.createElement('option');
+    option.value = league;
+    option.textContent = league;
+    leagueSelect.appendChild(option);
+  });
+  leagueSelect.value = currentLeague;
+}
+
+function onLeagueChange() {
+  currentLeague = leagueSelect.value;
+  saveLeague(currentLeague);
+  if (currentFlips.length > 0) {
+    statusMessage.textContent = 'League changed. Click "Check Prices" to refresh data.';
+  }
 }
 
 async function checkPrices() {
@@ -166,6 +180,7 @@ function onSearchChange() {
 checkPricesBtn.addEventListener('click', checkPrices);
 profitFilter.addEventListener('input', onProfitFilterChange);
 searchInput.addEventListener('input', onSearchChange);
+leagueSelect.addEventListener('change', onLeagueChange);
 
 clearHistoryBtn.addEventListener('click', () => {
   if (confirm('Clear all history?')) {
@@ -180,5 +195,5 @@ searchInput.addEventListener('keypress', (e) => {
   }
 });
 
-displayLeague();
+initializeLeagueSelector();
 renderHistory();

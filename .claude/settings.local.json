@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path c:\\\\VSCode\\\\exile-flip -Recurse)",
+      "Bash(Select-Object FullName)",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(curl -s http://localhost:8000/index.html)",
+      "Bash(pkill -f \"http.server\")",
+      "Bash(node -c /c/VSCode/exile-flip/src/data.js)",
+      "Bash(node -c /c/VSCode/exile-flip/src/utils.js)",
+      "Bash(node -c /c/VSCode/exile-flip/src/api.js)",
+      "Bash(node -c /c/VSCode/exile-flip/src/app.js)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'feat: MVP implementation with poe.ninja integration *)",
+      "PowerShell(Start-Process -FilePath \"c:\\\\VSCode\\\\exile-flip\\\\index.html\")",
+      "PowerShell(\"Opening index.html in browser...\")",
+      "Bash(curl -s \"https://poe.ninja/api/data/divinationcardsoverview?league=Hardcore\")",
+      "Bash(git commit -m 'fix: change default league to Softcore and add league selector *)"
+    ]
+  }
+}

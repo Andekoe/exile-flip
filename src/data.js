@@ -81,7 +81,7 @@ const DIVINATION_CARDS = {
   }
 };
 
-const DEFAULT_LEAGUE = 'Hardcore';
+const DEFAULT_LEAGUE = 'Softcore';
 
 const LEAGUES = [
   'Hardcore',

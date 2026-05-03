@@ -3,7 +3,7 @@ const POE_NINJA_BASE = 'https://poe.ninja/api/data';
 async function fetchDivinationPrices(league) {
   try {
     const response = await fetch(
-      `${POE_NINJA_BASE}/divinationcardsoverview?league=${encodeURIComponent(league)}`
+      `${POE_NINJA_BASE}/itemoverview?league=${encodeURIComponent(league)}&type=DivinationCard`
     );
 
     if (!response.ok) {
