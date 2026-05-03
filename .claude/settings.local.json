@@ -17,7 +17,9 @@
       "Bash(curl -s \"https://poe.ninja/api/data/divinationcardsoverview?league=Hardcore\")",
       "Bash(git commit -m 'fix: change default league to Softcore and add league selector *)",
       "PowerShell(\"App reloaded in browser - now defaults to Softcore with league selector\")",
-      "Bash(git commit -m 'fix: improve API error handling with multiple endpoints and logging *)"
+      "Bash(git commit -m 'fix: improve API error handling with multiple endpoints and logging *)",
+      "PowerShell(\"App updated with better error logging\")",
+      "Bash(git commit -m 'fix: add CORS proxy for local testing *)"
     ]
   }
 }

@@ -1,7 +1,12 @@
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+function buildProxiedUrl(endpoint) {
+  return CORS_PROXY + encodeURIComponent(endpoint);
+}
+
 const POE_NINJA_ENDPOINTS = [
   'https://poe.ninja/api/data/itemoverview?league={league}&type=DivinationCard',
   'https://poe.ninja/api/data/itemoverview?league={league}&type=Divination%20Card',
-  'https://poe.ninja/api/data/divinationcardsoverview?league={league}',
 ];
 
 async function tryEndpoint(url) {
@@ -25,8 +30,9 @@ async function tryEndpoint(url) {
 async function fetchDivinationPrices(league) {
   for (const endpoint of POE_NINJA_ENDPOINTS) {
     try {
-      const url = endpoint.replace('{league}', encodeURIComponent(league));
-      const data = await tryEndpoint(url);
+      const finalUrl = endpoint.replace('{league}', encodeURIComponent(league));
+      const proxiedUrl = buildProxiedUrl(finalUrl);
+      const data = await tryEndpoint(proxiedUrl);
       return parsePoeNinjaResponse(data);
     } catch (error) {
       console.warn(`Endpoint failed: ${error.message}`);
@@ -34,7 +40,7 @@ async function fetchDivinationPrices(league) {
     }
   }
 
-  throw new Error('All poe.ninja endpoints failed. The API may be down or blocking requests.');
+  throw new Error('All poe.ninja endpoints failed. Try deploying to GitHub Pages for better CORS handling.');
 }
 
 function parsePoeNinjaResponse(data) {
