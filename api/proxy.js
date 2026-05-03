@@ -52,6 +52,24 @@ function parseReward(rewardText) {
   return { qty: 1, name: rewardText.trim() };
 }
 
+function lookupRewardPrice(rewardText, allItemPrices, divCardPrices) {
+  const { qty, name } = parseReward(rewardText);
+  if (!name) return null;
+
+  // Direct lookup
+  if (allItemPrices[name] !== undefined) return allItemPrices[name] * qty;
+
+  // Strip "Corrupted " prefix and retry
+  const stripped = name.replace(/^Corrupted\s+/i, '');
+  if (stripped !== name && allItemPrices[stripped] !== undefined) return allItemPrices[stripped] * qty;
+
+  // Try as a divination card reward
+  if (divCardPrices[name] !== undefined) return divCardPrices[name] * qty;
+  if (stripped !== name && divCardPrices[stripped] !== undefined) return divCardPrices[stripped] * qty;
+
+  return null;
+}
+
 export default async function handler(req, res) {
   const { league, type } = req.query;
 
@@ -74,6 +92,8 @@ export default async function handler(req, res) {
       fetchItemPrices(league, 'UniqueMap'),
       fetchItemPrices(league, 'SkillGem'),
       fetchItemPrices(league, 'Fragment'),
+      fetchItemPrices(league, 'Scarab'),
+      fetchItemPrices(league, 'Invitation'),
     ]);
 
     if (!ninjaResponse.ok) {
@@ -83,11 +103,20 @@ export default async function handler(req, res) {
     const data = await ninjaResponse.json();
     const allItemPrices = Object.assign({}, ...priceMaps);
 
-    const enrichedItems = (data.items || []).map(item => {
+    // Build div card price map for rewards that are div cards (e.g. "9x House of Mirrors")
+    const divCardPrices = {};
+    const divItems = data.items || [];
+    const divLines = data.lines || [];
+    const divIdToName = {};
+    divItems.forEach(i => { divIdToName[i.id] = i.name; });
+    divLines.forEach(l => {
+      const n = divIdToName[l.id];
+      if (n && l.primaryValue !== undefined) divCardPrices[n] = l.primaryValue;
+    });
+
+    const enrichedItems = divItems.map(item => {
       const meta = cardMeta[item.name] || {};
-      const { qty, name: rewardName } = parseReward(meta.reward);
-      const rewardUnitPrice = rewardName ? (allItemPrices[rewardName] ?? null) : null;
-      const rewardValue = rewardUnitPrice !== null ? rewardUnitPrice * qty : null;
+      const rewardValue = meta.reward ? lookupRewardPrice(meta.reward, allItemPrices, divCardPrices) : null;
 
       return {
         ...item,

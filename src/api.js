@@ -35,10 +35,11 @@ function parsePoeNinjaResponse(data) {
   if (data.lines && Array.isArray(data.lines) && data.items && Array.isArray(data.items)) {
     const itemMap = {};
     data.items.forEach(item => {
+      const fallback = CARD_FALLBACK[item.name] || {};
       itemMap[item.id] = {
         name: item.name,
-        stackSize: item.stackSize ?? null,
-        reward: item.reward ?? null,
+        stackSize: item.stackSize ?? fallback.stackSize ?? null,
+        reward: item.reward ?? fallback.reward ?? null,
         rewardValue: item.rewardValue ?? null
       };
     });
