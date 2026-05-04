@@ -3,6 +3,7 @@ let currentLeague = getSavedLeague();
 
 const searchInput = document.getElementById('searchInput');
 const checkPricesBtn = document.getElementById('checkPricesBtn');
+const viewAllBtn = document.getElementById('viewAllBtn');
 const statusMessage = document.getElementById('statusMessage');
 const leagueSelect = document.getElementById('leagueSelect');
 const resultsTable = document.getElementById('resultsTable');
@@ -203,7 +204,39 @@ function renderHistory() {
   });
 }
 
+async function viewAllFlips() {
+  statusMessage.textContent = 'Fetching all cards...';
+  viewAllBtn.disabled = true;
+
+  try {
+    const allFlips = await getAllFlips(currentLeague);
+
+    const profitable = allFlips.filter(flip => flip.profitChaos !== null && flip.profitChaos > 0);
+
+    if (profitable.length === 0) {
+      statusMessage.textContent = 'No profitable flips found.';
+      resultsTable.style.display = 'none';
+      noResults.style.display = 'block';
+      return;
+    }
+
+    currentFlips = profitable;
+    displayResults(currentFlips);
+    statusMessage.textContent = `Found ${profitable.length} profitable flip${profitable.length !== 1 ? 's' : ''}.`;
+    searchInput.value = '';
+    hideSuggestions();
+  } catch (error) {
+    console.error('View all error:', error);
+    statusMessage.textContent = `Error: ${error.message}`;
+    resultsTable.style.display = 'none';
+    noResults.style.display = 'block';
+  } finally {
+    viewAllBtn.disabled = false;
+  }
+}
+
 checkPricesBtn.addEventListener('click', checkPrices);
+viewAllBtn.addEventListener('click', viewAllFlips);
 leagueSelect.addEventListener('change', onLeagueChange);
 
 clearHistoryBtn.addEventListener('click', () => {

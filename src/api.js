@@ -102,3 +102,37 @@ async function getCardPrices(searchTerm, league) {
     throw error;
   }
 }
+
+async function getAllFlips(league) {
+  try {
+    const priceMap = await fetchDivinationPrices(league);
+    const results = [];
+
+    Object.entries(priceMap).forEach(([cardName, prices]) => {
+      results.push({
+        cardName,
+        buyPrice: prices.chaos,
+        divinePrice: prices.divine,
+        stackSize: prices.stackSize,
+        reward: prices.reward,
+        rewardValue: prices.rewardValue,
+        totalCostChaos: prices.totalCostChaos,
+        totalCostDivine: prices.totalCostDivine,
+        profitChaos: prices.profitChaos,
+        profitDivine: prices.profitDivine
+      });
+    });
+
+    results.sort((a, b) => {
+      if (a.profitChaos === null || b.profitChaos === null) {
+        return b.profitChaos === null ? 1 : -1;
+      }
+      return b.profitChaos - a.profitChaos;
+    });
+
+    return results;
+  } catch (error) {
+    console.error('getAllFlips error:', error);
+    throw error;
+  }
+}
