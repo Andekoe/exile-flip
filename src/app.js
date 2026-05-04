@@ -143,6 +143,13 @@ function displayResults(flips) {
     const totalDivine = flip.totalCostDivine !== null ? `${flip.totalCostDivine.toFixed(2)} div` : '?';
     const rewardLabel = flip.reward ? sanitizeInput(flip.reward) : '?';
 
+    let rewardValueLabel = '?';
+    if (flip.rewardValue !== null) {
+      const divineRate = flip.divinePrice / flip.buyPrice;
+      const rewardDivine = flip.rewardValue * divineRate;
+      rewardValueLabel = `${formatPrice(flip.rewardValue)}c / ${rewardDivine.toFixed(2)} div`;
+    }
+
     let profitLabel = '?';
     let profitClass = '';
     if (flip.profitChaos !== null) {
@@ -157,6 +164,7 @@ function displayResults(flips) {
       <td class="table__cell table__cell--buy">${formatPrice(flip.buyPrice)}c / ${flip.divinePrice.toFixed(2)} div</td>
       <td class="table__cell table__cell--total">${totalChaos} / ${totalDivine}</td>
       <td class="table__cell table__cell--reward">${rewardLabel}</td>
+      <td class="table__cell table__cell--reward-value">${rewardValueLabel}</td>
       <td class="table__cell table__cell--profit ${profitClass}">${profitLabel}</td>
     `;
 
