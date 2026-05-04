@@ -1,0 +1,1690 @@
+{
+  "A Dab of Ink": {
+    "reward": "The Poet's Pen",
+    "stackSize": "9"
+  },
+  "A Fate Worse Than Death": {
+    "reward": "Cortex",
+    "stackSize": 4
+  },
+  "A Modest Request": {
+    "reward": "Megalomaniac",
+    "stackSize": 3
+  },
+  "A Mother's Parting Gift": {
+    "reward": "Fertile Mind",
+    "stackSize": "6"
+  },
+  "A Stone Perfected": {
+    "reward": "Jewel",
+    "stackSize": 5
+  },
+  "Abandoned Wealth": {
+    "reward": "3x Exalted Orb",
+    "stackSize": "5"
+  },
+  "Acclimatisation": {
+    "reward": "Orb of Alteration",
+    "stackSize": 2
+  },
+  "Akil's Prophecy": {
+    "reward": "Fated Unique Item",
+    "stackSize": "3"
+  },
+  "Alluring Bounty": {
+    "reward": "10x Exalted Orb",
+    "stackSize": "7"
+  },
+  "Alone in the Darkness": {
+    "reward": "Delve Item",
+    "stackSize": "5"
+  },
+  "Anarchy's Price": {
+    "reward": "Voltaxic RiftCorrupted",
+    "stackSize": "13"
+  },
+  "Apocalypse": {
+    "reward": "Eyes of the Greatwolf",
+    "stackSize": 2
+  },
+  "Arrogance of the Vaal": {
+    "reward": "ItemTwo-ImplicitCorrupted",
+    "stackSize": "8"
+  },
+  "Assassin's Favour": {
+    "reward": "Dagger",
+    "stackSize": "9"
+  },
+  "Assassin's Gift": {
+    "reward": "Divinarius",
+    "stackSize": 9
+  },
+  "Astral Protection": {
+    "reward": "Shield",
+    "stackSize": 5
+  },
+  "Atziri's Arsenal": {
+    "reward": "WeaponCorrupted",
+    "stackSize": "4"
+  },
+  "Audacity": {
+    "reward": "Doryani's FistCorrupted",
+    "stackSize": "5"
+  },
+  "Auspicious Ambitions": {
+    "reward": "Experimented Item",
+    "stackSize": 4
+  },
+  "Avian Pursuit": {
+    "reward": "Vivid Crystallised Lifeforce",
+    "stackSize": 3
+  },
+  "Azyran's Reward": {
+    "reward": "Prismatic JewelCorrupted",
+    "stackSize": "9"
+  },
+  "Baited Expectations": {
+    "reward": "Fishing Item",
+    "stackSize": "8"
+  },
+  "Beauty Through Death": {
+    "reward": "Queen's Sacrifice",
+    "stackSize": "5"
+  },
+  "Bijoux": {
+    "reward": "Cluster Jewel",
+    "stackSize": 3
+  },
+  "Birth of the Three": {
+    "reward": "The Goddess Bound",
+    "stackSize": "3"
+  },
+  "Blessing of God": {
+    "reward": "Elreon's JewelleryItem Level: 85",
+    "stackSize": "3"
+  },
+  "Blind Venture": {
+    "reward": "RingCorrupted",
+    "stackSize": "7"
+  },
+  "Boon of Justice": {
+    "reward": "Offering to the Goddess",
+    "stackSize": "6"
+  },
+  "Boon of the First Ones": {
+    "reward": "Bestiary Item",
+    "stackSize": "6"
+  },
+  "Boundless Realms": {
+    "reward": "Map",
+    "stackSize": "4"
+  },
+  "Bowyer's Dream": {
+    "reward": "Six-Link Harbinger BowItem Level: 91",
+    "stackSize": "6"
+  },
+  "Broken Promises": {
+    "reward": "Diamond Ring",
+    "stackSize": 2
+  },
+  "Brother's Gift": {
+    "reward": "Divine Orb",
+    "stackSize": 1
+  },
+  "Brother's Stash": {
+    "reward": "Exalted Orb",
+    "stackSize": 1
+  },
+  "Brotherhood in Exile": {
+    "reward": "One With Nothing",
+    "stackSize": 5
+  },
+  "Brush, Paint and Palette": {
+    "reward": "The Artist",
+    "stackSize": 5
+  },
+  "Buried Treasure": {
+    "reward": "Sulphite Scarab",
+    "stackSize": "3"
+  },
+  "Burning Blood": {
+    "reward": "Xoph's BloodCorrupted",
+    "stackSize": "6"
+  },
+  "Call to the First Ones": {
+    "reward": "Tier 1 TalismanCorrupted",
+    "stackSize": "5"
+  },
+  "Cameria's Cut": {
+    "reward": "Scarab",
+    "stackSize": "2"
+  },
+  "Cartographer's Delight": {
+    "reward": "MapMap Tier: 5",
+    "stackSize": "3"
+  },
+  "Chaotic Disposition": {
+    "reward": "5x Chaos Orb",
+    "stackSize": "1"
+  },
+  "Choking Guilt": {
+    "reward": "Stranglegasp",
+    "stackSize": 6
+  },
+  "Costly Curio": {
+    "reward": "Item",
+    "stackSize": 6
+  },
+  "Council of Cats": {
+    "reward": "Farrul Item",
+    "stackSize": "4"
+  },
+  "Coveted Possession": {
+    "reward": "5x Regal Orb",
+    "stackSize": "9"
+  },
+  "Damnation": {
+    "reward": "The Original Scripture",
+    "stackSize": 16
+  },
+  "Dark Dreams": {
+    "reward": "Bone HelmetElder Item",
+    "stackSize": "4"
+  },
+  "Dark Temptation": {
+    "reward": "Obliteration",
+    "stackSize": "5"
+  },
+  "Darker Half": {
+    "reward": "Eldritch Chaos Orb",
+    "stackSize": 3
+  },
+  "Death": {
+    "reward": "Mon'tregul's Grasp",
+    "stackSize": "4"
+  },
+  "Deathly Designs": {
+    "reward": "Level 21 Trap GemQuality: +23%Corrupted",
+    "stackSize": "7"
+  },
+  "Dementophobia": {
+    "reward": "10x Delirium Orb",
+    "stackSize": 11
+  },
+  "Demigod's Wager": {
+    "reward": "Orb of Annulment",
+    "stackSize": "7"
+  },
+  "Desecrated Virtue": {
+    "reward": "Level 4 Exceptional Support Gem",
+    "stackSize": 9
+  },
+  "Desperate Crusade": {
+    "reward": "Prism Guardian",
+    "stackSize": 3
+  },
+  "Destined to Crumble": {
+    "reward": "Body ArmourItem Level: 100",
+    "stackSize": "5"
+  },
+  "Dialla's Subjugation": {
+    "reward": "Superior Support GemQuality: +23%Corrupted",
+    "stackSize": "7"
+  },
+  "Disdain": {
+    "reward": "Delirium Orb",
+    "stackSize": 5
+  },
+  "Divine Beauty": {
+    "reward": "Divine Orb",
+    "stackSize": 12
+  },
+  "Divine Justice": {
+    "reward": "Eternal Labyrinth Enchantment",
+    "stackSize": "1"
+  },
+  "Doedre's Madness": {
+    "reward": "Doedre Item",
+    "stackSize": "9"
+  },
+  "Doryani's Epiphany": {
+    "reward": "Level 21 Transfigured Gem",
+    "stackSize": 3
+  },
+  "Draped in Dreams": {
+    "reward": "Six-Link Astral Plate",
+    "stackSize": 5
+  },
+  "Duality": {
+    "reward": "Body Armour",
+    "stackSize": 2
+  },
+  "Dying Anguish": {
+    "reward": "Superior Level 19 GemQuality: +19%",
+    "stackSize": "8"
+  },
+  "Earth Drinker": {
+    "reward": "Granite Flask",
+    "stackSize": "5"
+  },
+  "Echoes of Love": {
+    "reward": "Fidelitas' SpikeTwo-ImplicitCorrupted",
+    "stackSize": "3"
+  },
+  "Eldritch Perfection": {
+    "reward": "Item",
+    "stackSize": 4
+  },
+  "Emperor of Purity": {
+    "reward": "Six-Link Holy ChainmailItem Level: 60",
+    "stackSize": "7"
+  },
+  "Emperor's Luck": {
+    "reward": "5x Currency",
+    "stackSize": "5"
+  },
+  "Endless Night": {
+    "reward": "Maloney's Mechanism",
+    "stackSize": 7
+  },
+  "Etched in Blood": {
+    "reward": "Rigwald's QuillsTwo-ImplicitCorrupted",
+    "stackSize": "9"
+  },
+  "Eternal Bonds": {
+    "reward": "Replica Cortex",
+    "stackSize": 4
+  },
+  "Ever-Changing": {
+    "reward": "Orb of Unmaking",
+    "stackSize": 3
+  },
+  "Fateful Meeting": {
+    "reward": "League-Specific Item",
+    "stackSize": 9
+  },
+  "Father's Love": {
+    "reward": "Sublime Vision",
+    "stackSize": 2
+  },
+  "Fire Of Unknown Origin": {
+    "reward": "Nimis",
+    "stackSize": 7
+  },
+  "Forbidden Power": {
+    "reward": "BalefireCorrupted",
+    "stackSize": "4"
+  },
+  "Friendship": {
+    "reward": "A Master Seeks Help (Niko)",
+    "stackSize": "3"
+  },
+  "From Bone to Ashes": {
+    "reward": "Ngamahu's Flame",
+    "stackSize": 8
+  },
+  "Further Invention": {
+    "reward": "Helmet",
+    "stackSize": 4
+  },
+  "Gemcutter's Mercy": {
+    "reward": "Empower, Enhance or Enlighten",
+    "stackSize": 3
+  },
+  "Gemcutter's Promise": {
+    "reward": "Superior GemQuality: +20%",
+    "stackSize": "3"
+  },
+  "Gift of Asenath": {
+    "reward": "Asenath's Gentle Touch",
+    "stackSize": 5
+  },
+  "Gift of the Gemling Queen": {
+    "reward": "Level 20 Support Gem",
+    "stackSize": "9"
+  },
+  "Glimmer of Hope": {
+    "reward": "Gold Ring",
+    "stackSize": "8"
+  },
+  "Grave Knowledge": {
+    "reward": "Summon Raging SpiritQuality: +20%",
+    "stackSize": "6"
+  },
+  "Harmony of Souls": {
+    "reward": "9x Shrieking Essence",
+    "stackSize": "9"
+  },
+  "Haunting Shadows": {
+    "reward": "Metamorph Item",
+    "stackSize": 4
+  },
+  "Her Mask": {
+    "reward": "Sacrifice Fragment",
+    "stackSize": "4"
+  },
+  "Heterochromia": {
+    "reward": "Two-Stone Ring",
+    "stackSize": "2"
+  },
+  "History": {
+    "reward": "Hinekora's Lock",
+    "stackSize": 5
+  },
+  "Home": {
+    "reward": "Empower, Enhance or Enlighten",
+    "stackSize": 3
+  },
+  "Hope": {
+    "reward": "Prismatic RingCorrupted",
+    "stackSize": "5"
+  },
+  "House of Mirrors": {
+    "reward": "Mirror of Kalandra",
+    "stackSize": "9"
+  },
+  "Hubris": {
+    "reward": "Ring",
+    "stackSize": "5"
+  },
+  "Humility": {
+    "reward": "Tabula Rasa",
+    "stackSize": "9"
+  },
+  "Hunter's Resolve": {
+    "reward": "Bow",
+    "stackSize": "8"
+  },
+  "Hunter's Reward": {
+    "reward": "The Taming",
+    "stackSize": "3"
+  },
+  "I See Brothers": {
+    "reward": "Fracturing Orb",
+    "stackSize": 2
+  },
+  "Immortal Resolve": {
+    "reward": "Fated Connections",
+    "stackSize": "6"
+  },
+  "Imperfect Memories": {
+    "reward": "Jewellery",
+    "stackSize": 5
+  },
+  "Imperial Legacy": {
+    "reward": "Six-Link Imperial BowItem Level: 100",
+    "stackSize": "22"
+  },
+  "Jack in the Box": {
+    "reward": "Item",
+    "stackSize": "4"
+  },
+  "Lachrymal Necrosis": {
+    "reward": "Jewel",
+    "stackSize": 3
+  },
+  "Lantador's Lost Love": {
+    "reward": "Two-Stone Ring",
+    "stackSize": "7"
+  },
+  "Last Hope": {
+    "reward": "Mortal Hope",
+    "stackSize": "3"
+  },
+  "Left to Fate": {
+    "reward": "MapMap Tier: 16Unidentified Corrupted",
+    "stackSize": "4"
+  },
+  "Lethean Temptation": {
+    "reward": "Nebulis",
+    "stackSize": 6
+  },
+  "Light and Truth": {
+    "reward": "Crystal Sceptre",
+    "stackSize": "2"
+  },
+  "Lingering Remnants": {
+    "reward": "Vaal Temple MapItem Level: 83Corrupted",
+    "stackSize": "16"
+  },
+  "Lonely Warrior": {
+    "reward": "Defiance of Destiny",
+    "stackSize": 10
+  },
+  "Lost Worlds": {
+    "reward": "MapMap Tier: 15",
+    "stackSize": "8"
+  },
+  "Love Through Ice": {
+    "reward": "Unnatural Instinct",
+    "stackSize": 4
+  },
+  "Loyalty": {
+    "reward": "3x Orb of Fusing",
+    "stackSize": "5"
+  },
+  "Lucky Bastion": {
+    "reward": "Svalinn",
+    "stackSize": 6
+  },
+  "Lucky Connections": {
+    "reward": "20x Orb of Fusing",
+    "stackSize": "7"
+  },
+  "Lucky Deck": {
+    "reward": "10x Stacked Deck",
+    "stackSize": "9"
+  },
+  "Luminous Trove": {
+    "reward": "Voices",
+    "stackSize": 7
+  },
+  "Lysah's Respite": {
+    "reward": "Agate AmuletCorrupted",
+    "stackSize": "6"
+  },
+  "Magnum Opus": {
+    "reward": "Item",
+    "stackSize": 5
+  },
+  "Mawr Blaidd": {
+    "reward": "Eyes of the Greatwolf",
+    "stackSize": "16"
+  },
+  "Merciless Armament": {
+    "reward": "Merciless Two-Hand WeaponItem Level: 100",
+    "stackSize": "4"
+  },
+  "Might is Right": {
+    "reward": "Trypanon",
+    "stackSize": "9"
+  },
+  "Misery in Darkness": {
+    "reward": "Shroud of the Lightless",
+    "stackSize": 6
+  },
+  "Mitts": {
+    "reward": "Gloves",
+    "stackSize": "5"
+  },
+  "Monochrome": {
+    "reward": "10x Sextant",
+    "stackSize": "3"
+  },
+  "More is Never Enough": {
+    "reward": "Gilded Scarab",
+    "stackSize": "7"
+  },
+  "No Traces": {
+    "reward": "30x Orb of Scouring",
+    "stackSize": "9"
+  },
+  "Nook's Crown": {
+    "reward": "Bone HelmetItem Level: 100Elder Item",
+    "stackSize": "4"
+  },
+  "One Last Score": {
+    "reward": "Experimented Jewellery",
+    "stackSize": 5
+  },
+  "Outfoxed": {
+    "reward": "Veiled Exalted Orb",
+    "stackSize": 2
+  },
+  "Parasitic Passengers": {
+    "reward": "10x Incubator",
+    "stackSize": 8
+  },
+  "Peaceful Moments": {
+    "reward": "Timeless Jewel",
+    "stackSize": 5
+  },
+  "Perfection": {
+    "reward": "JewelleryItem Level: 100Shaper Item",
+    "stackSize": "5"
+  },
+  "Poisoned Faith": {
+    "reward": "Arakaali's Fang",
+    "stackSize": 8
+  },
+  "Prejudice": {
+    "reward": "Item",
+    "stackSize": 7
+  },
+  "Pride Before the Fall": {
+    "reward": "Kaom's HeartCorrupted",
+    "stackSize": "8"
+  },
+  "Pride of the First Ones": {
+    "reward": "Farrul's Fur",
+    "stackSize": "7"
+  },
+  "Prosperity": {
+    "reward": "Perandus' Gold Ring",
+    "stackSize": "10"
+  },
+  "Rain Tempter": {
+    "reward": "Strand MapItem Level: 73",
+    "stackSize": "9"
+  },
+  "Rain of Chaos": {
+    "reward": "Chaos Orb",
+    "stackSize": "8"
+  },
+  "Rats": {
+    "reward": "Rat's Nest",
+    "stackSize": "8"
+  },
+  "Rebirth": {
+    "reward": "Charan's Sword",
+    "stackSize": 27
+  },
+  "Rebirth and Renewal": {
+    "reward": "Horned Scarab",
+    "stackSize": 4
+  },
+  "Reflection of the Heart": {
+    "reward": "Kalandra's Touch",
+    "stackSize": 2
+  },
+  "Remembrance": {
+    "reward": "Precursor's EmblemCorrupted",
+    "stackSize": "8"
+  },
+  "Runic Luck": {
+    "reward": "10x Vendor Refresh Currency",
+    "stackSize": 4
+  },
+  "Sambodhi's Vow": {
+    "reward": "Mortal Fragment",
+    "stackSize": "3"
+  },
+  "Sambodhi's Wisdom": {
+    "reward": "Tabula Rasa",
+    "stackSize": 3
+  },
+  "Scholar of the Seas": {
+    "reward": "Mao Kun",
+    "stackSize": "7"
+  },
+  "Seven Years Bad Luck": {
+    "reward": "Mirror Shard",
+    "stackSize": "13"
+  },
+  "Shard of Fate": {
+    "reward": "Vivid Jewel",
+    "stackSize": "4"
+  },
+  "Society's Remorse": {
+    "reward": "Orb of Alteration",
+    "stackSize": 1
+  },
+  "Something Dark": {
+    "reward": "Blueprint",
+    "stackSize": 5
+  },
+  "Squandered Prosperity": {
+    "reward": "Perandus ManorCorrupted",
+    "stackSize": "5"
+  },
+  "Struck by Lightning": {
+    "reward": "Electrocuting JewelleryItem Level: 76",
+    "stackSize": "3"
+  },
+  "Succor of the Sinless": {
+    "reward": "Bottled Faith",
+    "stackSize": "6"
+  },
+  "Temperance": {
+    "reward": "Relic",
+    "stackSize": 4
+  },
+  "Terrible Secret of Space": {
+    "reward": "Level 21 Transfigured Golem Gem",
+    "stackSize": 8
+  },
+  "The Admirer": {
+    "reward": "Atziri Item",
+    "stackSize": "9"
+  },
+  "The Aesthete": {
+    "reward": "Shavronne Item",
+    "stackSize": "8"
+  },
+  "The Apothecary": {
+    "reward": "Mageblood",
+    "stackSize": 5
+  },
+  "The Archmage's Right Hand": {
+    "reward": "Glyphic Prophecy WandItem Level: 100",
+    "stackSize": "7"
+  },
+  "The Arena Champion": {
+    "reward": "Colosseum Map",
+    "stackSize": "10"
+  },
+  "The Army of Blood": {
+    "reward": "Bloodbond",
+    "stackSize": "6"
+  },
+  "The Artist": {
+    "reward": "Level 4 EnhanceCorrupted",
+    "stackSize": "11"
+  },
+  "The Aspirant": {
+    "reward": "Item",
+    "stackSize": 5
+  },
+  "The Astromancer": {
+    "reward": "The Eternity Shroud",
+    "stackSize": 7
+  },
+  "The Avenger": {
+    "reward": "Mj\u00f6lnerCorrupted",
+    "stackSize": "12"
+  },
+  "The Awakened": {
+    "reward": "Jewellery",
+    "stackSize": 6
+  },
+  "The Bargain": {
+    "reward": "Pure Breachstone",
+    "stackSize": "5"
+  },
+  "The Battle Born": {
+    "reward": "Axe",
+    "stackSize": "5"
+  },
+  "The Beast": {
+    "reward": "Belly of the Beast",
+    "stackSize": "6"
+  },
+  "The Betrayal": {
+    "reward": "Maligaro's Virtuosity",
+    "stackSize": "9"
+  },
+  "The Bitter Blossom": {
+    "reward": "Level 21 Chaos Gem",
+    "stackSize": 3
+  },
+  "The Blazing Fire": {
+    "reward": "Chin Sol",
+    "stackSize": "6"
+  },
+  "The Blessing of Moosh": {
+    "reward": "Level 21 Transfigured Gem",
+    "stackSize": 4
+  },
+  "The Body": {
+    "reward": "Body Armour",
+    "stackSize": "4"
+  },
+  "The Bones": {
+    "reward": "Level 21 Vaal Summon SkeletonsCorrupted",
+    "stackSize": "6"
+  },
+  "The Breach": {
+    "reward": "Breach Item",
+    "stackSize": "4"
+  },
+  "The Brittle Emperor": {
+    "reward": "Voll's DevotionCorrupted",
+    "stackSize": "8"
+  },
+  "The Cache": {
+    "reward": "Jewellery",
+    "stackSize": 6
+  },
+  "The Cacophony": {
+    "reward": "3x Deafening Essence",
+    "stackSize": "8"
+  },
+  "The Calling": {
+    "reward": "Beyond Item",
+    "stackSize": "6"
+  },
+  "The Carrion Crow": {
+    "reward": "Life Armour",
+    "stackSize": "4"
+  },
+  "The Cartographer": {
+    "reward": "10x Cartographer's Chisel",
+    "stackSize": "1"
+  },
+  "The Cataclysm": {
+    "reward": "Level 21 Spell GemCorrupted",
+    "stackSize": "13"
+  },
+  "The Catalyst": {
+    "reward": "Vaal Orb",
+    "stackSize": "3"
+  },
+  "The Catch": {
+    "reward": "Fishing Rod",
+    "stackSize": 18
+  },
+  "The Celestial Justicar": {
+    "reward": "Six-Link Astral Plate",
+    "stackSize": "6"
+  },
+  "The Celestial Stone": {
+    "reward": "Opal RingItem Level: 100Shaper Item",
+    "stackSize": "10"
+  },
+  "The Chains that Bind": {
+    "reward": "Six-Link Body Armour",
+    "stackSize": "11"
+  },
+  "The Cheater": {
+    "reward": "Level 6 Awakened Support GemQuality: +20%Corrupted",
+    "stackSize": "3"
+  },
+  "The Chosen": {
+    "reward": "Skin of the LordsCorrupted",
+    "stackSize": "5"
+  },
+  "The Coming Storm": {
+    "reward": "Lightning Coil",
+    "stackSize": "8"
+  },
+  "The Conduit": {
+    "reward": "Doryani's Fist",
+    "stackSize": "9"
+  },
+  "The Craving": {
+    "reward": "Unending Hunger",
+    "stackSize": "4"
+  },
+  "The Cursed King": {
+    "reward": "Rigwald's Curse",
+    "stackSize": "8"
+  },
+  "The Damned": {
+    "reward": "Soul Ripper",
+    "stackSize": "6"
+  },
+  "The Dapper Prodigy": {
+    "reward": "Six-Link Body ArmourItem Level: 100",
+    "stackSize": "6"
+  },
+  "The Dark Mage": {
+    "reward": "Six-Link StaffItem Level: 55",
+    "stackSize": "6"
+  },
+  "The Darkest Dream": {
+    "reward": "Severed in SleepCorrupted",
+    "stackSize": "6"
+  },
+  "The Deal": {
+    "reward": "Cartography Scarab",
+    "stackSize": "5"
+  },
+  "The Deceiver": {
+    "reward": "Belt of the DeceiverCorrupted",
+    "stackSize": "4"
+  },
+  "The Deep Ones": {
+    "reward": "Tidebreaker",
+    "stackSize": "5"
+  },
+  "The Demon": {
+    "reward": "HeadhunterTwo-ImplicitCorrupted",
+    "stackSize": "10"
+  },
+  "The Demoness": {
+    "reward": "Death's Hand",
+    "stackSize": "5"
+  },
+  "The Destination": {
+    "reward": "Watcher's Eye",
+    "stackSize": 9
+  },
+  "The Devastator": {
+    "reward": "Corrupted Atziri's Disfavour",
+    "stackSize": 8
+  },
+  "The Doctor": {
+    "reward": "Headhunter",
+    "stackSize": "8"
+  },
+  "The Doppelganger": {
+    "reward": "Superior Mirror ArrowQuality: +20%",
+    "stackSize": "2"
+  },
+  "The Dragon": {
+    "reward": "Coruscating Elixir",
+    "stackSize": "4"
+  },
+  "The Dragon's Heart": {
+    "reward": "Level 4 EmpowerCorrupted",
+    "stackSize": "11"
+  },
+  "The Dreamer": {
+    "reward": "Chayula Item",
+    "stackSize": "6"
+  },
+  "The Dreamland": {
+    "reward": "Poorjoy's Asylum",
+    "stackSize": "8"
+  },
+  "The Drunken Aristocrat": {
+    "reward": "Divination Distillate",
+    "stackSize": "8"
+  },
+  "The Dungeon Master": {
+    "reward": "Belt",
+    "stackSize": 7
+  },
+  "The Easy Stroll": {
+    "reward": "Terrace MapModifiers: 8Corrupted",
+    "stackSize": "2"
+  },
+  "The Eldritch Decay": {
+    "reward": "Uber Elder Fragment",
+    "stackSize": "4"
+  },
+  "The Encroaching Darkness": {
+    "reward": "MapCorrupted",
+    "stackSize": "8"
+  },
+  "The Endless Darkness": {
+    "reward": "Voidforge",
+    "stackSize": "9"
+  },
+  "The Endurance": {
+    "reward": "Vivid Crimson Jewel",
+    "stackSize": "4"
+  },
+  "The Enforcer": {
+    "reward": "Spiked Gloves of the Conquest (Culling Strike)",
+    "stackSize": 4
+  },
+  "The Enlightened": {
+    "reward": "Level 3 Enlighten",
+    "stackSize": "6"
+  },
+  "The Enthusiasts": {
+    "reward": "Victario's Influence",
+    "stackSize": 3
+  },
+  "The Escape": {
+    "reward": "Seven-League Step",
+    "stackSize": "5"
+  },
+  "The Eternal War": {
+    "reward": "Timeless Jewel",
+    "stackSize": 4
+  },
+  "The Ethereal": {
+    "reward": "Six-Link Vaal Regalia",
+    "stackSize": "7"
+  },
+  "The Everlasting": {
+    "reward": "Originator Incarnation Item",
+    "stackSize": 3
+  },
+  "The Explorer": {
+    "reward": "MapCorrupted",
+    "stackSize": "6"
+  },
+  "The Eye of Terror": {
+    "reward": "Pure Chayula Breachstone",
+    "stackSize": "8"
+  },
+  "The Eye of the Dragon": {
+    "reward": "JewelCorrupted",
+    "stackSize": "10"
+  },
+  "The Fathomless Depths": {
+    "reward": "Lightpoacher",
+    "stackSize": "8"
+  },
+  "The Feast": {
+    "reward": "Romira's BanquetCorrupted",
+    "stackSize": "5"
+  },
+  "The Fiend": {
+    "reward": "HeadhunterCorrupted",
+    "stackSize": "11"
+  },
+  "The Finishing Touch": {
+    "reward": "Fertile Catalyst",
+    "stackSize": 2
+  },
+  "The Fishmonger": {
+    "reward": "Albino Rhoa Feather",
+    "stackSize": "4"
+  },
+  "The Fletcher": {
+    "reward": "DrillneckCorrupted",
+    "stackSize": "5"
+  },
+  "The Flora's Gift": {
+    "reward": "Five-Link StaffItem Level: 66",
+    "stackSize": "5"
+  },
+  "The Fool": {
+    "reward": "20x Orb of Chance",
+    "stackSize": "4"
+  },
+  "The Forbidden Fruit": {
+    "reward": "Uber Pinnacle Fragment",
+    "stackSize": 1
+  },
+  "The Forgotten Treasure": {
+    "reward": "Leather Belt",
+    "stackSize": 6
+  },
+  "The Formless Sea": {
+    "reward": "Varunastra",
+    "stackSize": "7"
+  },
+  "The Forsaken": {
+    "reward": "Umbilicus Immortalis",
+    "stackSize": "7"
+  },
+  "The Fortunate": {
+    "reward": "Divine Orb",
+    "stackSize": 12
+  },
+  "The Forward Gaze": {
+    "reward": "Replica Item",
+    "stackSize": 6
+  },
+  "The Fox": {
+    "reward": "Level 20 Gem",
+    "stackSize": "6"
+  },
+  "The Fox in the Brambles": {
+    "reward": "Bramblejack",
+    "stackSize": 7
+  },
+  "The Gambler": {
+    "reward": "Divination Card",
+    "stackSize": "5"
+  },
+  "The Garish Power": {
+    "reward": "Jewel",
+    "stackSize": "4"
+  },
+  "The Gemcutter": {
+    "reward": "Gemcutter's Prism",
+    "stackSize": "3"
+  },
+  "The Gentleman": {
+    "reward": "SwordCorrupted",
+    "stackSize": "4"
+  },
+  "The Gladiator": {
+    "reward": "Nightmare Bascinet",
+    "stackSize": "5"
+  },
+  "The Golden Era": {
+    "reward": "Flaring Eclipse StaffItem Level: 100",
+    "stackSize": "7"
+  },
+  "The Greatest Intentions": {
+    "reward": "The Saviour",
+    "stackSize": 10
+  },
+  "The Gulf": {
+    "reward": "Thread of Hope",
+    "stackSize": 5
+  },
+  "The Hale Heart": {
+    "reward": "ItemItem Level: 100Elder Item",
+    "stackSize": "4"
+  },
+  "The Harvester": {
+    "reward": "The Harvest",
+    "stackSize": "11"
+  },
+  "The Hermit": {
+    "reward": "Lifesprig",
+    "stackSize": "9"
+  },
+  "The Heroic Shot": {
+    "reward": "17x Chromatic Orb",
+    "stackSize": "1"
+  },
+  "The Hive of Knowledge": {
+    "reward": "Machina Mitts",
+    "stackSize": 6
+  },
+  "The Hoarder": {
+    "reward": "Exalted Orb",
+    "stackSize": "12"
+  },
+  "The Hook": {
+    "reward": "Level 21 Transfigured Gem",
+    "stackSize": 8
+  },
+  "The Hunger": {
+    "reward": "Taste of Hate",
+    "stackSize": "9"
+  },
+  "The Immortal": {
+    "reward": "House of Mirrors",
+    "stackSize": "10"
+  },
+  "The Incantation": {
+    "reward": "The Whispering Ice",
+    "stackSize": "4"
+  },
+  "The Innocent": {
+    "reward": "40x Orb of Regret",
+    "stackSize": "10"
+  },
+  "The Inoculated": {
+    "reward": "Seraphim's Armour",
+    "stackSize": "4"
+  },
+  "The Insane Cat": {
+    "reward": "Mageblood",
+    "stackSize": 9
+  },
+  "The Insatiable": {
+    "reward": "The HarvestCorrupted",
+    "stackSize": "3"
+  },
+  "The Inventor": {
+    "reward": "10x Vaal Orb",
+    "stackSize": "6"
+  },
+  "The Iron Bard": {
+    "reward": "Trash to Treasure",
+    "stackSize": "9"
+  },
+  "The Jester": {
+    "reward": "Merciless One-Hand WeaponItem Level: 100",
+    "stackSize": "9"
+  },
+  "The Jeweller's Boon": {
+    "reward": "The Jeweller's Touch",
+    "stackSize": "5"
+  },
+  "The Journey": {
+    "reward": "Harbinger's Orb",
+    "stackSize": "3"
+  },
+  "The King's Blade": {
+    "reward": "Bloodthirsty Eternal SwordItem Level: 66",
+    "stackSize": "5"
+  },
+  "The King's Heart": {
+    "reward": "Kaom's Heart",
+    "stackSize": "8"
+  },
+  "The Lake": {
+    "reward": "Reflecting Mist",
+    "stackSize": 8
+  },
+  "The Landing": {
+    "reward": "The BeachheadMap Tier: 15Corrupted",
+    "stackSize": "5"
+  },
+  "The Last Laugh": {
+    "reward": "Replica Dragonfang's Flight",
+    "stackSize": 5
+  },
+  "The Last One Standing": {
+    "reward": "Atziri's Disfavour",
+    "stackSize": "10"
+  },
+  "The Last Supper": {
+    "reward": "Bino's Kitchen Knife",
+    "stackSize": 6
+  },
+  "The Leviathan": {
+    "reward": "Maven Item",
+    "stackSize": 7
+  },
+  "The Lich": {
+    "reward": "Midnight BargainCorrupted",
+    "stackSize": "12"
+  },
+  "The Life Thief": {
+    "reward": "Zerphi's Heart",
+    "stackSize": "6"
+  },
+  "The Lion": {
+    "reward": "Lioneye Item",
+    "stackSize": "5"
+  },
+  "The Long Watch": {
+    "reward": "The Fourth Vow",
+    "stackSize": 3
+  },
+  "The Lord in Black": {
+    "reward": "Ring of BamethItem Level: 83",
+    "stackSize": "6"
+  },
+  "The Lord of Celebration": {
+    "reward": "Sceptre of CelebrationShaper Item",
+    "stackSize": "4"
+  },
+  "The Lover": {
+    "reward": "JewelleryItem Level: 79",
+    "stackSize": "2"
+  },
+  "The Lunaris Priestess": {
+    "reward": "Sire of Shards",
+    "stackSize": "5"
+  },
+  "The Mad King": {
+    "reward": "The King's Path",
+    "stackSize": "7"
+  },
+  "The Magma Crab": {
+    "reward": "Level 21 Vaal Molten Shell",
+    "stackSize": 6
+  },
+  "The Master": {
+    "reward": "Bisco's Collar",
+    "stackSize": "4"
+  },
+  "The Master Artisan": {
+    "reward": "20x Quality Currency",
+    "stackSize": "5"
+  },
+  "The Mayor": {
+    "reward": "The Perandus Manor",
+    "stackSize": "5"
+  },
+  "The Mercenary": {
+    "reward": "ShieldCorrupted",
+    "stackSize": "5"
+  },
+  "The Messenger": {
+    "reward": "Harbinger Fragment",
+    "stackSize": "4"
+  },
+  "The Metalsmith's Gift": {
+    "reward": "Prismatic Ring",
+    "stackSize": "6"
+  },
+  "The Mind's Eyes": {
+    "reward": "Astral Projector",
+    "stackSize": 7
+  },
+  "The Miracle": {
+    "reward": "Awakened Exceptional Gem",
+    "stackSize": 3
+  },
+  "The Mountain": {
+    "reward": "Jewel of Potency",
+    "stackSize": "6"
+  },
+  "The Nurse": {
+    "reward": "The Doctor",
+    "stackSize": "8"
+  },
+  "The Oath": {
+    "reward": "Death's Oath",
+    "stackSize": "6"
+  },
+  "The Obscured": {
+    "reward": "Breachstone",
+    "stackSize": "7"
+  },
+  "The Offering": {
+    "reward": "Shavronne's Wrappings",
+    "stackSize": "8"
+  },
+  "The Old Man": {
+    "reward": "Fishing RodTwo-ImplicitCorrupted",
+    "stackSize": "12"
+  },
+  "The One That Got Away": {
+    "reward": "Replica Bated Breath",
+    "stackSize": 7
+  },
+  "The One With All": {
+    "reward": "Le Heup of AllCorrupted",
+    "stackSize": "6"
+  },
+  "The Opulent": {
+    "reward": "RingItem Level: 100",
+    "stackSize": "5"
+  },
+  "The Pack Leader": {
+    "reward": "Alpha's Howl",
+    "stackSize": "6"
+  },
+  "The Pact": {
+    "reward": "Pledge of Hands",
+    "stackSize": "9"
+  },
+  "The Patient": {
+    "reward": "The Nurse",
+    "stackSize": 8
+  },
+  "The Penitent": {
+    "reward": "Unset Ring",
+    "stackSize": "5"
+  },
+  "The Poet": {
+    "reward": "Blood of CorruptionCorrupted",
+    "stackSize": "9"
+  },
+  "The Polymath": {
+    "reward": "Astramentis",
+    "stackSize": "3"
+  },
+  "The Porcupine": {
+    "reward": "Six-Link Short BowItem Level: 50",
+    "stackSize": "6"
+  },
+  "The Price of Devotion": {
+    "reward": "Mageblood",
+    "stackSize": 7
+  },
+  "The Price of Loyalty": {
+    "reward": "Item Level: 25Two-ImplicitCorrupted",
+    "stackSize": "4"
+  },
+  "The Price of Prescience": {
+    "reward": "Delirium",
+    "stackSize": 5
+  },
+  "The Price of Protection": {
+    "reward": "Chateau MapWatchstone Count: 4",
+    "stackSize": "5"
+  },
+  "The Primordial": {
+    "reward": "JewelPrimordial",
+    "stackSize": "5"
+  },
+  "The Prince of Darkness": {
+    "reward": "Elegant Hubris",
+    "stackSize": 6
+  },
+  "The Professor": {
+    "reward": "The Putrid Cloister",
+    "stackSize": "4"
+  },
+  "The Progeny of Lunaris": {
+    "reward": "Dying Sun",
+    "stackSize": "2"
+  },
+  "The Puzzle": {
+    "reward": "5x Breachstone Splinter",
+    "stackSize": "5"
+  },
+  "The Queen": {
+    "reward": "Atziri's Acuity",
+    "stackSize": "16"
+  },
+  "The Rabbit's Foot": {
+    "reward": "10x Incursion Vial",
+    "stackSize": 8
+  },
+  "The Rabid Rhoa": {
+    "reward": "Malicious Gemini ClawItem Level: 83",
+    "stackSize": "4"
+  },
+  "The Realm": {
+    "reward": "Superior Portal",
+    "stackSize": "5"
+  },
+  "The Risk": {
+    "reward": "Ventor's Gamble",
+    "stackSize": "3"
+  },
+  "The Rite of Elements": {
+    "reward": "Level 21 Golem GemCorrupted",
+    "stackSize": "5"
+  },
+  "The Road to Power": {
+    "reward": "Runic One-Hand WeaponItem Level: 100",
+    "stackSize": "7"
+  },
+  "The Rusted Bard": {
+    "reward": "Tainted Mythic Orb",
+    "stackSize": 9
+  },
+  "The Ruthless Ceinture": {
+    "reward": "Meginord's GirdleCorrupted",
+    "stackSize": "7"
+  },
+  "The Sacrifice": {
+    "reward": "Six-Link Sacrificial GarbItem Level: 100",
+    "stackSize": "4"
+  },
+  "The Saint's Treasure": {
+    "reward": "2x Exalted Orb",
+    "stackSize": "10"
+  },
+  "The Samurai's Eye": {
+    "reward": "Watcher's Eye",
+    "stackSize": "3"
+  },
+  "The Scarred Meadow": {
+    "reward": "Wake of Destruction",
+    "stackSize": "9"
+  },
+  "The Scavenger": {
+    "reward": "Carcass Jack",
+    "stackSize": "8"
+  },
+  "The Scholar": {
+    "reward": "40x Scroll of Wisdom",
+    "stackSize": "3"
+  },
+  "The Seeker": {
+    "reward": "3x Orb of Annulment",
+    "stackSize": "9"
+  },
+  "The Sephirot": {
+    "reward": "10x Divine Orb",
+    "stackSize": "11"
+  },
+  "The Shepherd's Sandals": {
+    "reward": "Boots",
+    "stackSize": 3
+  },
+  "The Shieldbearer": {
+    "reward": "The Squire",
+    "stackSize": 8
+  },
+  "The Shortcut": {
+    "reward": "Quicksilver Flask of the Cheetah",
+    "stackSize": 1
+  },
+  "The Side Quest": {
+    "reward": "A Master Seeks Help",
+    "stackSize": "5"
+  },
+  "The Sigil": {
+    "reward": "Unassailable Amulet",
+    "stackSize": "3"
+  },
+  "The Silly Boy": {
+    "reward": "6x Horned Scarab",
+    "stackSize": 9
+  },
+  "The Siren": {
+    "reward": "The Whispering IceCorrupted",
+    "stackSize": "7"
+  },
+  "The Skeleton": {
+    "reward": "Level 1 Summon SkeletonsQuality: +23%Corrupted",
+    "stackSize": "6"
+  },
+  "The Slumbering Beast": {
+    "reward": "Hinekora's Lock",
+    "stackSize": 5
+  },
+  "The Soul": {
+    "reward": "Soul Taker",
+    "stackSize": "9"
+  },
+  "The Spark and the Flame": {
+    "reward": "Berek's Respite",
+    "stackSize": "2"
+  },
+  "The Spoiled Prince": {
+    "reward": "Dictator's Prophecy WandItem Level: 100",
+    "stackSize": "4"
+  },
+  "The Standoff": {
+    "reward": "Rustic Sash",
+    "stackSize": "3"
+  },
+  "The Stormcaller": {
+    "reward": "Agnerod Staff",
+    "stackSize": "4"
+  },
+  "The Strategist": {
+    "reward": "Inspired LearningCorrupted",
+    "stackSize": "6"
+  },
+  "The Summoner": {
+    "reward": "Superior Minion GemQuality: +20%",
+    "stackSize": "6"
+  },
+  "The Sun": {
+    "reward": "Rise of the Phoenix",
+    "stackSize": "7"
+  },
+  "The Surgeon": {
+    "reward": "Surgeon's Flask",
+    "stackSize": "4"
+  },
+  "The Surveyor": {
+    "reward": "MapMap Tier: 14",
+    "stackSize": "4"
+  },
+  "The Survivalist": {
+    "reward": "7x Orb of Alchemy",
+    "stackSize": "3"
+  },
+  "The Sword King's Salute": {
+    "reward": "Daresso's Salute",
+    "stackSize": "7"
+  },
+  "The Thaumaturgist": {
+    "reward": "Shavronne's RevelationCorrupted",
+    "stackSize": "8"
+  },
+  "The Throne": {
+    "reward": "Kaom's RootsCorrupted",
+    "stackSize": "2"
+  },
+  "The Tinkerer's Table": {
+    "reward": "5x Fossil",
+    "stackSize": "5"
+  },
+  "The Tireless Extractor": {
+    "reward": "10x Oil",
+    "stackSize": 8
+  },
+  "The Tower": {
+    "reward": "Staff",
+    "stackSize": "6"
+  },
+  "The Traitor": {
+    "reward": "WandCorrupted",
+    "stackSize": "4"
+  },
+  "The Trial": {
+    "reward": "MapMap Tier: 15Corrupted",
+    "stackSize": "7"
+  },
+  "The Twilight Moon": {
+    "reward": "The Twilight Temple",
+    "stackSize": "6"
+  },
+  "The Twins": {
+    "reward": null,
+    "stackSize": 8
+  },
+  "The Tyrant": {
+    "reward": "Merciless WeaponItem Level: 100",
+    "stackSize": "9"
+  },
+  "The Undaunted": {
+    "reward": "Nemesis ItemCorrupted",
+    "stackSize": "5"
+  },
+  "The Undisputed": {
+    "reward": "Merciless Vaal AxeItem Level: 100Elder Item",
+    "stackSize": "8"
+  },
+  "The Unexpected Prize": {
+    "reward": "Attribute Transforming Jewel",
+    "stackSize": 2
+  },
+  "The Union": {
+    "reward": "10x Gemcutter's Prism",
+    "stackSize": "7"
+  },
+  "The Valkyrie": {
+    "reward": "Nemesis Item",
+    "stackSize": "8"
+  },
+  "The Valley of Steel Boxes": {
+    "reward": "Monstrous Treasure",
+    "stackSize": "9"
+  },
+  "The Vast": {
+    "reward": "Song of the Sirens",
+    "stackSize": "7"
+  },
+  "The Visionary": {
+    "reward": "Lioneye's Vision",
+    "stackSize": "6"
+  },
+  "The Void": {
+    "reward": null,
+    "stackSize": 1
+  },
+  "The Warden": {
+    "reward": "AmuletCorrupted",
+    "stackSize": "4"
+  },
+  "The Warlord": {
+    "reward": "Six-Link Coronal MaulItem Level: 83",
+    "stackSize": "6"
+  },
+  "The Watcher": {
+    "reward": "Crown of Eyes",
+    "stackSize": "12"
+  },
+  "The Web": {
+    "reward": "Weapon of Crafting",
+    "stackSize": "8"
+  },
+  "The Wedding Gift": {
+    "reward": "Arakaali's Fang",
+    "stackSize": 2
+  },
+  "The White Knight": {
+    "reward": "Six-Link Astral Plate",
+    "stackSize": 8
+  },
+  "The Wilted Rose": {
+    "reward": "Level 21 Aura GemCorrupted",
+    "stackSize": "7"
+  },
+  "The Wind": {
+    "reward": "Windripper",
+    "stackSize": "7"
+  },
+  "The Witch": {
+    "reward": "Kiara's Determination",
+    "stackSize": "8"
+  },
+  "The Wolf": {
+    "reward": "Rigwald Item",
+    "stackSize": "5"
+  },
+  "The Wolf's Legacy": {
+    "reward": "Vaults of Atziri",
+    "stackSize": "4"
+  },
+  "The Wolf's Shadow": {
+    "reward": "Hyaon's Fury",
+    "stackSize": "3"
+  },
+  "The Wolven King's Bite": {
+    "reward": "Rigwald's Quills",
+    "stackSize": "8"
+  },
+  "The Wolverine": {
+    "reward": "ClawCorrupted",
+    "stackSize": "4"
+  },
+  "The World Eater": {
+    "reward": "Starforge",
+    "stackSize": "8"
+  },
+  "The Wrath": {
+    "reward": "10x Chaos Orb",
+    "stackSize": "8"
+  },
+  "The Wretched": {
+    "reward": "Belt",
+    "stackSize": "6"
+  },
+  "Thirst for Knowledge": {
+    "reward": "Gluttony",
+    "stackSize": "5"
+  },
+  "Three Faces in the Dark": {
+    "reward": "3x Chaos Orb",
+    "stackSize": "7"
+  },
+  "Three Voices": {
+    "reward": "3x Essence",
+    "stackSize": "3"
+  },
+  "Thunderous Skies": {
+    "reward": "Storm Cloud",
+    "stackSize": "5"
+  },
+  "Time-Lost Relic": {
+    "reward": "League-Specific Item",
+    "stackSize": "10"
+  },
+  "Toxic Tidings": {
+    "reward": "Dendrobate",
+    "stackSize": 5
+  },
+  "Tranquillity": {
+    "reward": "Voltaxic Rift",
+    "stackSize": "7"
+  },
+  "Treasure Hunter": {
+    "reward": "Vaults of AtziriCorrupted",
+    "stackSize": "7"
+  },
+  "Turn the Other Cheek": {
+    "reward": "PacifismCorrupted",
+    "stackSize": "3"
+  },
+  "Unchained": {
+    "reward": "Facebreaker",
+    "stackSize": 4
+  },
+  "Underground Forest": {
+    "reward": "10x Awakened Sextant",
+    "stackSize": "4"
+  },
+  "Unrequited Love": {
+    "reward": "Mirror Shard",
+    "stackSize": 16
+  },
+  "Vanity": {
+    "reward": "Tabula RasaCorrupted",
+    "stackSize": "9"
+  },
+  "Vile Power": {
+    "reward": "Ancient Doom",
+    "stackSize": "5"
+  },
+  "Vinia's Token": {
+    "reward": "10x Orb of Regret",
+    "stackSize": "5"
+  },
+  "Void of the Elements": {
+    "reward": "Overpowering Opal RingItem Level: 100Elder Item",
+    "stackSize": "3"
+  },
+  "Volatile Power": {
+    "reward": "Superior Vaal GemQuality: +20%Corrupted",
+    "stackSize": "9"
+  },
+  "Wealth and Power": {
+    "reward": "Level 4 EnlightenCorrupted",
+    "stackSize": "11"
+  },
+  "When Currents Blaze": {
+    "reward": "Stormfire",
+    "stackSize": 2
+  },
+  "Who Asked": {
+    "reward": "Dictator's Weapon",
+    "stackSize": 9
+  }
+}

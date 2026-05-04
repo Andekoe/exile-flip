@@ -1,22 +1,7 @@
-const CARD_DB_URL = 'https://raw.githubusercontent.com/mikifriki/Divination-Cards/master/db.json';
+const CARD_DB = require('./cards.json');
 
-async function fetchCardMetadata() {
-  try {
-    const response = await fetch(CARD_DB_URL);
-    if (!response.ok) return {};
-    const data = await response.json();
-
-    const map = {};
-    (data.Cards || []).forEach(card => {
-      if (card.name) {
-        map[card.name] = { stackSize: card.amount || null, reward: card.item || null };
-      }
-    });
-    return map;
-  } catch (error) {
-    console.error('Card DB fetch error:', error);
-    return {};
-  }
+function fetchCardMetadata() {
+  return CARD_DB;
 }
 
 async function fetchItemPrices(league, type) {
