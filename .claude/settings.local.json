@@ -89,7 +89,13 @@
       "Bash(curl -s \"https://www.poewiki.net/w/api.php?action=cargoexport&tables=items&fields=name%2Cstack_size%2Cclass_id&where=class_id%3D%27DivinationCard%27&format=json&limit=5\")",
       "Bash(curl -s \"https://www.poewiki.net/w/api.php?action=parse&page=The_Apothecary&prop=wikitext&format=json\")",
       "Bash(curl -s \"https://www.poewiki.net/w/api.php?action=parse&page=The_Shortcut&prop=wikitext&format=json\")",
-      "Bash(curl -s 'https://www.poewiki.net/w/api.php?action=parse&page=__TRACKED_VAR__&prop=wikitext&format=json')"
+      "Bash(curl -s 'https://www.poewiki.net/w/api.php?action=parse&page=__TRACKED_VAR__&prop=wikitext&format=json')",
+      "Bash(pkill -f \"python3 -m http.server\")",
+      "Bash(lsof -ti:8000)",
+      "Bash(xargs kill *)",
+      "Bash(vercel --version)",
+      "Bash(vercel project *)",
+      "Bash(vercel alias *)"
     ]
   }
 }
